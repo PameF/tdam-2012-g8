@@ -1,0 +1,18 @@
+<resources>
+    <color name="blanco">#ffffff</color>
+	<color name="negro">#000000</color>
+	<color name="cian_claro">#69c3c3</color>
+	<color name="cian_oscuto">#139696</color>
+	<color name="rosa_claro">#f76990</color>
+	<color name="rosa_oscuro">#ef507c</color>
+	<color name="morado_claro">#c24776</color>
+	<color name="morado_oscuro">#a9295b</color>
+	<color name="verde_claro">#98c93c</color>
+	<color name="verde_oscuro">#78b407</color>
+	<color name="naranja_claro">#ffb93b</color>
+	<color name="naranja_oscuro">#f6a20c</color>
+	<color name="gris_claro">#e5e5e5</color>
+	<color name="gris_oscuro">#cacaca</color>
+	<color name="gris2_claro">#666666</color>
+	<color name="gris2_oscuro">#474747</color>
+</resources>
