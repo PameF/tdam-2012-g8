@@ -3,8 +3,8 @@
   <!--  Gradient Bg for listrow -->
   
   <gradient
-      android:startColor="#ffb93b"
-      android:centerColor="#f6a20c"
-      android:endColor="#ffb93b"      
+      android:startColor="@color/naranja_claro"
+      android:centerColor="@color/naranja_oscuro"
+      android:endColor="@color/naranja_claro"      
       android:angle="270" />
 </shape>
