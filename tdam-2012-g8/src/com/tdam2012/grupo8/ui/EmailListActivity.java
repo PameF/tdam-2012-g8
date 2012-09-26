@@ -14,14 +14,16 @@ public class EmailListActivity extends Activity
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_list);
-        
-        Button btnNew = (Button)findViewById(R.id.email_list_new);
-        btnNew.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				Intent intent = new Intent(EmailListActivity.this, EmailNewActivity.class);
-				startActivity(intent);
-			}
-		});
+        Button bot = (Button)findViewById(R.id.button1);
+    	bot.setOnClickListener(new OnClickListener(){
+    		public void onClick(View v)
+        	{
+        		Intent i = new Intent(EmailListActivity.this,  EmailNewActivity.class);
+        		startActivity(i);
+        		
+        	}
+    		
+    	}); 	  	
+
     }
 }
