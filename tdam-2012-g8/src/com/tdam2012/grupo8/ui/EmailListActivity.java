@@ -20,10 +20,7 @@ public class EmailListActivity extends Activity
         	{
         		Intent i = new Intent(EmailListActivity.this,  EmailNewActivity.class);
         		startActivity(i);
-        		
         	}
-    		
-    	}); 	  	
-
+    	}); 
     }
 }

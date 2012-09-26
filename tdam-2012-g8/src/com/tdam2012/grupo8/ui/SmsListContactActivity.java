@@ -1,14 +1,14 @@
 package com.tdam2012.grupo8.ui;
 
+import com.tdam2012.grupo8.R;
+
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.tdam2012.grupo8.R;
-
-public class SmsNewActivity extends Activity 
+public class SmsListContactActivity extends Activity
 {
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sms_new);
+        setContentView(R.layout.activity_sms_list_contact);
     }
 }
