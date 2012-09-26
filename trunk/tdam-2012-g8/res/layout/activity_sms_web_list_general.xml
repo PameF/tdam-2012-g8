@@ -3,23 +3,26 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-
+
+
+
     <Button
         android:id="@+id/button1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_gradient_naranja"
+        android:background="@drawable/shape_gradient_verde"
         android:padding="15dp"
-        android:text="Nuevo mensaje de texto"
+        android:text="Nuevo mensaje de texto web"
         android:textColor="@color/blanco"
         android:textSize="@dimen/padding_large"
         android:textStyle="bold" />
     
     <include
-		    android:id="@+id/sms_list_item1"
-		    layout="@layout/listitem_sms" />
+		    android:id="@+id/sms_web_list_item1"
+		    layout="@layout/listitem_sms_web" />
 
-		<include layout="@layout/listitem_sms" />
-		<include layout="@layout/listitem_sms" />
+		<include layout="@layout/listitem_sms_web" />
+		<include layout="@layout/listitem_sms_web" />
+    
 
 </LinearLayout>
