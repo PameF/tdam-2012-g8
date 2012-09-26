@@ -23,7 +23,10 @@
         <activity android:name=".ui.CallActivity" ></activity>
         <activity android:name=".ui.SmsListActivity" ></activity>
         <activity android:name=".ui.SmsWebListActivity" ></activity>
+        
         <activity android:name=".ui.EmailListActivity" ></activity>
+        <activity android:name=".ui.EmailNewActivity" ></activity>
+        
         <activity android:name=".ui.ContactDetailsActivity" ></activity>
     </application>
 
