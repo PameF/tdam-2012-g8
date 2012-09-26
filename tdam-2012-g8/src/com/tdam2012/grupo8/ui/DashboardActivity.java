@@ -50,12 +50,14 @@ public class DashboardActivity extends Activity implements OnClickListener {
 				break;
 				
 			case R.id.dashboard_btn_sms:
+				intent = new Intent(this, SmsHistoryActivity.class);
 				break;
 				
 			case R.id.dashboard_btn_email:
 				break;
 				
 			case R.id.dashboard_btn_sms_web:
+				intent = new Intent(this, SmsWebHistoryActivity.class);
 				break;
 		}
 		
