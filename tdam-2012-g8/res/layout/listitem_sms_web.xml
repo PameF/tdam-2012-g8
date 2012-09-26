@@ -37,7 +37,7 @@
                 android:layout_weight="1"
                 android:text="Último mensaje..."
                 android:textColor="@color/gris2_claro" />
-
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="fill_parent"
