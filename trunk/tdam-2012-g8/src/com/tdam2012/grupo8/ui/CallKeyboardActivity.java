@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.view.View.OnClickListener;
 
 
@@ -17,7 +18,7 @@ public class CallKeyboardActivity extends Activity
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call_keyboard);
-        Button bot = (Button)findViewById(R.id.imageButton1);
+        ImageButton bot = (ImageButton)findViewById(R.id.imageButton1);
     	bot.setOnClickListener(new OnClickListener(){
     		public void onClick(View v)
         	{

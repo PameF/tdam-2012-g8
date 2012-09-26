@@ -46,7 +46,7 @@ public class DashboardActivity extends Activity implements OnClickListener {
 		
 		switch(v.getId()) {
 			case R.id.dashboard_btn_llamadas:
-				intent = new Intent(this, ContactDetailsActivity.class);
+				intent = new Intent(this, CallKeyboardActivity.class);
 				break;
 				
 			case R.id.dashboard_btn_sms:
