@@ -5,68 +5,78 @@
     android:orientation="vertical" 
     android:background="@drawable/shape_gradient_gris">
 
+
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_gradient_gris">
-
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="10dp" >
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="A:"
+            android:layout_height="wrap_content"
+            android:text="Destinatarios:"
             android:textSize="@dimen/padding_large" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.96" >
-
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="246dp"
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="246dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="phone"
+                android:text="pame_f27@hotmail.com" />
+
+
+            <ImageButton
+                android:id="@+id/imageButton1"
+                android:layout_width="70dp"
+                android:layout_height="46dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_gradient_verde"
+                android:src="@drawable/ic_action_search" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="phone"
-            android:text="pamef.2707" >
-
-            <requestFocus />
-        </EditText>
-
-        <ImageButton
-            android:id="@+id/imageButton1"
-            android:layout_width="70dp"
-            android:layout_height="46dp"
-            android:background="@drawable/shape_gradient_verde"
-            android:src="@drawable/ic_action_search" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_gradient_gris_oscuro" >
-
+            android:layout_marginTop="5dp"
+            android:text="Mensaje:"
+            android:textSize="@dimen/padding_large" />
 
         <EditText
             android:id="@+id/editText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.64"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="5"
             android:ems="10"
             android:inputType="textMultiLine" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enviar" />
     </LinearLayout>
-    
-    
+
+
+
+
+
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="fill_parent"
+        android:layout_height="46dp
+        "
+        android:background="@drawable/shape_gradient_verde"
+        android:text="Enviar"
+        android:textColor="@color/blanco"
+        android:textSize="@dimen/padding_large"
+        android:textStyle="bold" />
 
 </LinearLayout>
