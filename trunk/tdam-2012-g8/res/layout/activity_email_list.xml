@@ -3,19 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
+
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/email_list_new"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_gradient_rosa"
         android:padding="15dp"
-        android:text="Nuevo mensaje de texto"
+        android:text="Nuevo correo electrónico"
         android:textColor="@color/blanco"
         android:textSize="@dimen/padding_large"
         android:textStyle="bold" />
+
+		<include
+		    android:id="@+id/email_list_item1"
+		    layout="@layout/listitem_email" />
 
-		<include layout="@layout/listitem_email" />
 		<include layout="@layout/listitem_email" />
 		<include layout="@layout/listitem_email" />
 		
