@@ -29,7 +29,7 @@
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/naranja_oscuro"
+                    android:background="@color/naranja_claro"
                     android:orientation="vertical" >
                 </LinearLayout>
             </LinearLayout>
@@ -38,7 +38,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="100"
-                android:background="@color/naranja_oscuro"
+                android:background="@color/naranja_claro"
                 android:orientation="vertical" >
 
                 <TextView
@@ -56,7 +56,7 @@
                     android:gravity="right"
                     android:paddingLeft="10dp"
                     android:text="10:30, 25 sep"
-                    android:textColor="@color/gris2_oscuro" />
+                    android:textColor="@color/gris2_claro" />
             </LinearLayout>
 
             <LinearLayout
@@ -73,7 +73,7 @@
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@color/naranja_oscuro"
+                    android:background="@color/naranja_claro"
                     android:orientation="vertical" >
                 </LinearLayout>
             </LinearLayout>
@@ -93,7 +93,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="100"
-                android:background="@color/naranja_oscuro"
+                android:background="@color/naranja_claro"
                 android:orientation="vertical" >
             </LinearLayout>
 
