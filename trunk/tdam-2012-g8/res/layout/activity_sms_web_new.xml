@@ -3,58 +3,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shape_gradient_gris"
-    android:orientation="vertical"
-    android:padding="10dp" >
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Destinatarios:"
-        android:textSize="@dimen/padding_large" />
-
+    android:orientation="vertical" >
+
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Destinatarios:"
+            android:textSize="@dimen/padding_large" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="phone"
+                android:text="pamef.2707" />
+
+            <ImageButton
+                android:id="@+id/imageButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/shape_gradient_verde"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:src="@drawable/ic_action_search" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Mensaje:"
+            android:textSize="@dimen/padding_large" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/editText2"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
+            android:layout_weight="5"
             android:ems="10"
-            android:inputType="phone"
-            android:text="pamef.2707" >
-
-            <requestFocus />
-        </EditText>
-
-        <ImageButton
-            android:id="@+id/imageButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:background="@drawable/shape_gradient_verde"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:src="@drawable/ic_action_search" />
-
+            android:inputType="textMultiLine" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/TextView01"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Mensaje:"
-        android:textSize="@dimen/padding_large" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="5"
-        android:ems="10"
-        android:inputType="textMultiLine" />
 
     <Button
         android:id="@+id/button2"
