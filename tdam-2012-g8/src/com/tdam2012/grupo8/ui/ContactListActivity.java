@@ -15,7 +15,7 @@ public class ContactListActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_list);
         
-        LinearLayout list = (LinearLayout)findViewById(R.id.sms_list_item1);
+        LinearLayout list = (LinearLayout)findViewById(R.id.contact_list_item1);
         list.setOnClickListener(new OnClickListener(){
        		public void onClick(View v)
            	{

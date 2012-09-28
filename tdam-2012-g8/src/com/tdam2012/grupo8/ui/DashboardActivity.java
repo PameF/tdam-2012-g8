@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -23,6 +25,27 @@ public class DashboardActivity extends Activity implements OnClickListener {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
+                
+        MenuItem item = menu.findItem(R.id.menu_history);
+        item.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+			
+			public boolean onMenuItemClick(MenuItem item) {
+				Intent intent = new Intent(DashboardActivity.this, HistoryCallActivity.class);
+				startActivity(intent);
+				return false;
+			}
+		});
+        
+        item = menu.findItem(R.id.menu_contacts);
+        item.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+			
+			public boolean onMenuItemClick(MenuItem item) {
+				Intent intent = new Intent(DashboardActivity.this, ContactListActivity.class);
+				startActivity(intent);
+				return false;
+			}
+		});
+        
         return true;
     }
     

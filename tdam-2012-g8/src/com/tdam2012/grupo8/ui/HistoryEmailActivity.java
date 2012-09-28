@@ -13,7 +13,7 @@ public class HistoryEmailActivity extends Activity implements OnClickListener {
 
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history_call);
+        setContentView(R.layout.activity_history_email);
         
         initTabs();
     }
@@ -37,7 +37,7 @@ public class HistoryEmailActivity extends Activity implements OnClickListener {
 		
 		switch(v.getId()) {
 			case R.id.history_tab_call:
-				intent = new Intent(this, HistoryEmailActivity.class);
+				intent = new Intent(this, HistoryCallActivity.class);
 				break;
 			case R.id.history_tab_sms:
 				intent = new Intent(this, HistorySmsActivity.class);
