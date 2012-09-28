@@ -33,6 +33,7 @@
         <activity android:name=".ui.EmailListActivity" ></activity>
         <activity android:name=".ui.EmailNewActivity" ></activity>
         
+        <activity android:name=".ui.ContactNewActivity" ></activity>
         <activity android:name=".ui.ContactDetailsActivity" ></activity>
         <activity android:name=".ui.ContactListActivity" ></activity>
                 
