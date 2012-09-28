@@ -2,117 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >   
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:orientation="horizontal" >
-
-        <TabWidget
-            android:id="@android:id/tabs"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:background="@drawable/shape_gradient_gris_oscuro"
-            android:orientation="horizontal" >
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@drawable/shape_gradient_gris_oscuro"
-                android:gravity="center"
-                android:orientation="vertical" >
-
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_action_dial_pad" />
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Teclado"
-                    android:textColor="@color/gris_claro"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-            
-        </TabWidget>
-
-        <TabWidget
-            android:id="@android:id/tabs"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:background="@drawable/shape_gradient_gris_oscuro"
-            android:orientation="horizontal" >
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:orientation="vertical" >
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_action_registry" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Registro"
-                    android:textColor="@color/gris_claro"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-        </TabWidget>
-
-        <TabWidget
-            android:id="@android:id/tabs"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:background="@drawable/shape_gradient_cian" >
-  
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:orientation="vertical" >
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_action_contacts" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Contactos"
-                    android:textColor="@color/gris_claro"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-        </TabWidget>
-
-    </LinearLayout>
+    android:orientation="vertical" >
+
+    	<Button
+    	    android:id="@+id/button1"
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="wrap_content"
+    	    android:background="@drawable/shape_gradient_cian"
+    	    android:padding="15dp"
+    	    android:text="Nuevo contacto"
+    	    android:textColor="@color/blanco"
+    	    android:textSize="@dimen/padding_large"
+    	    android:textStyle="bold" />
     
-      <LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content" >
-		
-	  
-	</LinearLayout>
-
       <include
           android:id="@+id/contact_list_item1"
           layout="@layout/listitem_contact_data" />
