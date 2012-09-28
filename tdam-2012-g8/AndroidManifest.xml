@@ -23,17 +23,23 @@
         <activity android:name=".ui.CallActivity" ></activity>
         
         <activity android:name=".ui.SmsListActivity" ></activity>
-        <activity android:name=".ui.SmsListContactActivity" ></activity>
+		<activity android:name=".ui.SmsListContactActivity" ></activity>
         <activity android:name=".ui.SmsNewActivity" ></activity>
         
-        <activity android:name=".ui.SmsWebListActivity" ></activity>
-        <activity android:name=".ui.SmsWebListContactActivity" ></activity>
-        <activity android:name=".ui.SmsWebNewActivity" ></activity>
-        
+       	<activity android:name=".ui.SmsWebListActivity" ></activity>
+       	<activity android:name=".ui.SmsWebNewActivity" ></activity> 
+       	<activity android:name=".ui.SmsWebListContactActivity" ></activity> 
+
         <activity android:name=".ui.EmailListActivity" ></activity>
         <activity android:name=".ui.EmailNewActivity" ></activity>
         
         <activity android:name=".ui.ContactDetailsActivity" ></activity>
+        <activity android:name=".ui.ContactListActivity" ></activity>
+                
+       	<activity android:name=".ui.HistoryCallActivity" ></activity>
+       	<activity android:name=".ui.HistorySmsActivity" ></activity>
+       	<activity android:name=".ui.HistoryEmailActivity" ></activity>
+       	<activity android:name=".ui.HistorySmsWebActivity" ></activity>
     </application>
 
 </manifest>

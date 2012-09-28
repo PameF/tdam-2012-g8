@@ -8,9 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:orientation="horizontal" >
-
+
         <TabWidget
-            android:id="@android:id/tabs"
+            android:id="@+id/history_tab_call"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
@@ -43,9 +43,9 @@
             </LinearLayout>
             
         </TabWidget>
-
+
         <TabWidget
-            android:id="@android:id/tabs"
+            android:id="@+id/history_tab_sms"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
@@ -78,9 +78,9 @@
 
             </LinearLayout>
         </TabWidget>
-
+
         <TabWidget
-            android:id="@android:id/tabs"
+            android:id="@+id/history_tab_email"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
@@ -112,9 +112,9 @@
 
             </LinearLayout>
         </TabWidget>
-
+
         <TabWidget
-            android:id="@android:id/tabs"
+            android:id="@+id/history_tab_sms_web"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
