@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 public class ContactListActivity extends Activity
@@ -23,5 +24,14 @@ public class ContactListActivity extends Activity
            		startActivity(intent);
            	}
        	}); 
+        
+        Button btn = (Button)findViewById(R.id.button1);
+        btn.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent intent = new Intent(ContactListActivity.this,  ContactNewActivity.class);
+           		startActivity(intent);
+			}
+		});
 	}
 }
