@@ -11,13 +11,14 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class DashboardActivity extends Activity implements OnClickListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.activity_dashboard2);
         
         inicializarEventos ();
     }
@@ -50,16 +51,16 @@ public class DashboardActivity extends Activity implements OnClickListener {
     }
     
     private void inicializarEventos () {
-    	Button btn = (Button)findViewById(R.id.dashboard_btn_llamadas);
+    	ImageButton btn = (ImageButton)findViewById(R.id.dashboard_btn_llamadas);
     	btn.setOnClickListener(this);
     	
-    	btn = (Button)findViewById(R.id.dashboard_btn_sms);
+    	btn = (ImageButton)findViewById(R.id.dashboard_btn_sms);
     	btn.setOnClickListener(this);
     	
-    	btn = (Button)findViewById(R.id.dashboard_btn_email);
+    	btn = (ImageButton)findViewById(R.id.dashboard_btn_email);
     	btn.setOnClickListener(this);
     	
-    	btn = (Button)findViewById(R.id.dashboard_btn_sms_web);
+    	btn = (ImageButton)findViewById(R.id.dashboard_btn_sms_web);
     	btn.setOnClickListener(this);
     }
 
