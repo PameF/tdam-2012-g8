@@ -22,15 +22,15 @@
             android:id="@+id/textView1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre Apellido"
+            android:text="@string/contact_name"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/cian_oscuro" />
-
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="NumeroTelefono"
+            android:text="@string/contact_number"
             android:textColor="@color/gris2_claro" />
 
     </LinearLayout>

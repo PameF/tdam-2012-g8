@@ -13,7 +13,7 @@ public class CallKeyboardActivity extends Activity {
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_call_keyboard);
+      //  setContentView(R.layout.activity_call_keyboard);
         
         ImageButton btn = (ImageButton)findViewById(R.id.imageButton1);
     	btn.setOnClickListener(new OnClickListener(){

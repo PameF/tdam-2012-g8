@@ -3,14 +3,14 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-
+
     <Button
         android:id="@+id/button1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_gradient_naranja"
         android:padding="15dp"
-        android:text="Nuevo mensaje de texto"
+        android:text="@string/title_new_sms"
         android:textColor="@color/blanco"
         android:textSize="@dimen/padding_large"
         android:textStyle="bold" />

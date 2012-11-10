@@ -18,15 +18,9 @@
         android:orientation="vertical"
         android:paddingLeft="10dp" >
 
-
-
-
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
-
-
-
 
             <TextView
                 android:id="@+id/textView1"
@@ -34,10 +28,9 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:gravity="fill_vertical"
-                android:text="Nombre Apellido"
+                android:text="@string/contact_name"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/cian_oscuro" />
-
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -52,25 +45,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
-
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="3515123456"
+                android:text="@string/contact_number"
                 android:textColor="@color/gris2_claro" />
-
+
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="20:48, 30 sep"
+                android:text="@string/date"
                 android:textColor="@color/gris2_claro" />
 
         </LinearLayout>
+        
     </LinearLayout>
 
 </LinearLayout>

@@ -3,30 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
-    	<Button
-    	    android:id="@+id/button1"
-    	    android:layout_width="fill_parent"
-    	    android:layout_height="wrap_content"
-    	    android:background="@drawable/shape_gradient_cian"
-    	    android:padding="15dp"
-    	    android:text="Nuevo contacto"
-    	    android:textColor="@color/blanco"
-    	    android:textSize="@dimen/padding_large"
-    	    android:textStyle="bold" />
+
+    <Button
+		android:id="@+id/button1"
+		android:layout_width="fill_parent"
+	  	android:layout_height="wrap_content"
+		android:background="@drawable/shape_gradient_cian"
+	 	android:padding="15dp"
+		android:text="@string/title_new_contact"
+		android:textColor="@color/blanco"
+		android:textSize="@dimen/padding_large"
+	 	android:textStyle="bold" />
     
-      <include
-          android:id="@+id/contact_list_item1"
-          layout="@layout/listitem_contact_data" />
+	<include
+     	android:id="@+id/contact_list_item1"
+     	layout="@layout/listitem_contact_data" />
 
-      <include layout="@layout/listitem_contact_data" />
+   	<include layout="@layout/listitem_contact_data" />
 
-      <include layout="@layout/listitem_contact_data" />
+  	<include layout="@layout/listitem_contact_data" />
 
-      <include layout="@layout/listitem_contact_data" />
+   	<include layout="@layout/listitem_contact_data" />
 
-      <include layout="@layout/listitem_contact_data" />
+   	<include layout="@layout/listitem_contact_data" />
 
-      <include layout="@layout/listitem_contact_data" />
+ 	<include layout="@layout/listitem_contact_data" />
 
 </LinearLayout>

@@ -10,47 +10,47 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:text="Llamando..."
+        android:text="@string/title_calling"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/naranja_claro"
         android:textStyle="bold" />
-
+
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:scaleType="centerInside"
         android:src="@drawable/android_avatar" />
-
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Pamela Ferreyra"
+        android:text="@string/contact_name"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/cian_claro"
         android:textStyle="bold" />
-
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="3512345678"
+        android:text="@string/contact_number"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/gris_claro" />
-
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="(Móvil)"
+        android:text="@string/phone_type1"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/gris_claro" />
-
+
     <ImageButton
         android:id="@+id/imageButton1"
         android:layout_width="wrap_content"

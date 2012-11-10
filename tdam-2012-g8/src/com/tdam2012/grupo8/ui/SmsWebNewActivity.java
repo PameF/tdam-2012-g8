@@ -9,6 +9,6 @@ public class SmsWebNewActivity extends Activity
 {
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sms_web_new);
+        //setContentView(R.layout.activity_sms_web_new);
     }
 }

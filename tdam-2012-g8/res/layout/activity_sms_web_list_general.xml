@@ -4,15 +4,13 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-
-
     <Button
         android:id="@+id/button1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_gradient_verde"
         android:padding="15dp"
-        android:text="Nuevo mensaje de texto web"
+        android:text="@string/title_new_sms_web"
         android:textColor="@color/blanco"
         android:textSize="@dimen/padding_large"
         android:textStyle="bold" />
@@ -24,5 +22,4 @@
 		<include layout="@layout/listitem_sms_web" />
 		<include layout="@layout/listitem_sms_web" />
     
-
 </LinearLayout>
