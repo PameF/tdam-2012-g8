@@ -1,11 +1,11 @@
-package com.tdam2012.grupo8.ui;
+package com.tdam2012.grupo8.ui.contacts;
 
 import com.tdam2012.grupo8.R;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-public class ContactNewActivity extends Activity {
+public class NewActivity extends Activity {
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {

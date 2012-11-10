@@ -6,6 +6,8 @@
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="15" />
+    
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -33,9 +35,9 @@
         <activity android:name=".ui.EmailListActivity" ></activity>
         <activity android:name=".ui.EmailNewActivity" ></activity>
         
-        <activity android:name=".ui.ContactNewActivity" ></activity>
-        <activity android:name=".ui.ContactDetailsActivity" ></activity>
-        <activity android:name=".ui.ContactListActivity" ></activity>
+        <activity android:name=".ui.contacts.ListActivity" ></activity>
+        <activity android:name=".ui.contacts.NewActivity" ></activity>
+        <activity android:name=".ui.contacts.DetailsActivity" ></activity>
                 
        	<activity android:name=".ui.HistoryCallActivity" ></activity>
        	<activity android:name=".ui.HistorySmsActivity" ></activity>

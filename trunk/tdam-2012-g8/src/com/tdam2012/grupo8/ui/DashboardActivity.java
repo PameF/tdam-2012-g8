@@ -1,6 +1,7 @@
 package com.tdam2012.grupo8.ui;
 
 import com.tdam2012.grupo8.R;
+import com.tdam2012.grupo8.ui.contacts.ListActivity;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -41,7 +42,7 @@ public class DashboardActivity extends Activity implements OnClickListener {
         item.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 			
 			public boolean onMenuItemClick(MenuItem item) {
-				Intent intent = new Intent(DashboardActivity.this, ContactListActivity.class);
+				Intent intent = new Intent(DashboardActivity.this, ListActivity.class);
 				startActivity(intent);
 				return false;
 			}
@@ -70,7 +71,7 @@ public class DashboardActivity extends Activity implements OnClickListener {
 		
 		switch(v.getId()) {
 			case R.id.dashboard_btn_llamadas:
-				intent = new Intent(this, ContactListActivity.class);
+				intent = new Intent(this, ListActivity.class);
 				//intent = new Intent(this, CallKeyboardActivity.class);
 				break;
 				
