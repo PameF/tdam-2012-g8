@@ -10,6 +10,6 @@ public class ContactNewActivity extends Activity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact_new);
+       // setContentView(R.layout.activity_contact_new);
     }
 }

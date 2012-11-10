@@ -13,7 +13,6 @@
         android:orientation="horizontal"
         android:padding="5dp" >
 
-
         <EditText
             android:id="@+id/editText1"
             android:layout_width="0dp"
@@ -23,13 +22,14 @@
             android:inputType="text" >
 
             <requestFocus />
+            
         </EditText>
 		
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enviar" />
+            android:text="@string/title_send" />
 			
     </LinearLayout>
 
@@ -44,11 +44,9 @@
             android:layout_height="fill_parent"
             android:background="@drawable/shape_gradient_gris"
             android:orientation="vertical" >
-
+
 			<include layout="@layout/listitem_dialog_green" />
-
             <include layout="@layout/listitem_dialog_pink" />
-
             <include layout="@layout/listitem_dialog_green" />
 
         </LinearLayout>

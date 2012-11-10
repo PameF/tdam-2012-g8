@@ -18,7 +18,7 @@ public class DashboardActivity extends Activity implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard2);
+        setContentView(R.layout.activity_dashboard);
         
         inicializarEventos ();
     }

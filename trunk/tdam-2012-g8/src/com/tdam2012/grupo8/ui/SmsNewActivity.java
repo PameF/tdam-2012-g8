@@ -14,7 +14,7 @@ public class SmsNewActivity extends Activity
 {
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sms_new);
+        //setContentView(R.layout.activity_sms_new);
         ImageButton btn = (ImageButton)findViewById(R.id.imageButton1);
     	btn.setOnClickListener(new OnClickListener(){
     		public void onClick(View v)
