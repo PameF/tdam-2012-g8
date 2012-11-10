@@ -89,7 +89,7 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 
 			Contact item = (Contact) getItem(position);
 						
-			holder.imageAvatar.setImageURI(item.getAvatar());
+			//holder.imageAvatar.setImageURI(item.getAvatar());
 			holder.textName.setText(item.getName());
 			holder.textPhone.setText("");
 
