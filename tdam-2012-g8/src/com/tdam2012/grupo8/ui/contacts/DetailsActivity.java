@@ -1,4 +1,4 @@
-package com.tdam2012.grupo8.ui;
+package com.tdam2012.grupo8.ui.contacts;
 
 import com.tdam2012.grupo8.R;
 
@@ -6,7 +6,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 
-public class ContactDetailsActivity extends Activity {
+public class DetailsActivity extends Activity {
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {

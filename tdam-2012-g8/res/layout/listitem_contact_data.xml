@@ -5,9 +5,9 @@
     android:background="@drawable/shape_gradient_gris"
     android:orientation="horizontal"
     android:padding="10dp" >
-
+
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/listitem_contact_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_launcher" />
@@ -17,17 +17,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingLeft="10dp" >
-
+
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/listitem_contact_name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/contact_name"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/cian_oscuro" />
-
+
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/listitem_contact_phone"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/contact_number"

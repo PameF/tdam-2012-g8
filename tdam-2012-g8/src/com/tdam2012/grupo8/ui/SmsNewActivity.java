@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.tdam2012.grupo8.R;
+import com.tdam2012.grupo8.ui.contacts.ListActivity;
 
 public class SmsNewActivity extends Activity 
 {
@@ -19,7 +20,7 @@ public class SmsNewActivity extends Activity
     	btn.setOnClickListener(new OnClickListener(){
     		public void onClick(View v)
         	{
-        		Intent i = new Intent(SmsNewActivity.this,  ContactListActivity.class);
+        		Intent i = new Intent(SmsNewActivity.this,  ListActivity.class);
         		startActivity(i);
         	}
     	}); 
