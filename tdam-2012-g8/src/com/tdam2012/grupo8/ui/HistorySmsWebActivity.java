@@ -9,47 +9,11 @@ import android.widget.TabWidget;
 
 import com.tdam2012.grupo8.R;
 
-public class HistorySmsWebActivity extends Activity implements OnClickListener {
+public class HistorySmsWebActivity extends Activity{
 
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_sms_web);
-        
-        initTabs();
-    }
-	
-	private void initTabs() {
-		TabWidget tab = (TabWidget)findViewById(R.id.history_tab_call);
-		tab.setOnClickListener(this);
-		
-		tab = (TabWidget)findViewById(R.id.history_tab_sms);
-		tab.setOnClickListener(this);
-		
-		tab = (TabWidget)findViewById(R.id.history_tab_email);
-		tab.setOnClickListener(this);
-		
-		tab = (TabWidget)findViewById(R.id.history_tab_sms_web);
-		tab.setOnClickListener(this);
-	}
 
-	public void onClick(View v) {
-		Intent intent = null;
-		
-		switch(v.getId()) {
-			case R.id.history_tab_call:
-				intent = new Intent(this, HistoryCallActivity.class);
-				break;
-			case R.id.history_tab_sms:
-				intent = new Intent(this, HistorySmsWebActivity.class);
-				break;
-			case R.id.history_tab_email:
-				intent = new Intent(this, HistoryEmailActivity.class);
-				break;
-			case R.id.history_tab_sms_web:
-				intent = new Intent(this, HistorySmsWebActivity.class);
-				break;
-		}
-		
-		startActivity(intent);
-	}
+    }
 }
