@@ -32,7 +32,7 @@ public class DashboardActivity extends Activity implements OnClickListener {
         item.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 			
 			public boolean onMenuItemClick(MenuItem item) {
-				Intent intent = new Intent(DashboardActivity.this, HistoryCallActivity.class);
+				Intent intent = new Intent(DashboardActivity.this, TabHostActivity.class);
 				startActivity(intent);
 				return false;
 			}

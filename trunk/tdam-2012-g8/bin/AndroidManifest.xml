@@ -43,6 +43,7 @@
        	<activity android:name=".ui.HistorySmsActivity" ></activity>
        	<activity android:name=".ui.HistoryEmailActivity" ></activity>
        	<activity android:name=".ui.HistorySmsWebActivity" ></activity>
+       	<activity android:name=".ui.TabHostActivity" ></activity>
     </application>
 
 </manifest>
