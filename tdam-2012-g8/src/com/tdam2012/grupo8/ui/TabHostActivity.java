@@ -8,38 +8,83 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TabHost;
 
-public class TabHostActivity extends TabActivity
+public class TabHostActivity extends TabActivity implements TabHost.OnTabChangeListener
 {
+	private TabHost tabHost;
+	
 	public void onCreate(Bundle savedInstanceState) {
+		
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabhost);
         
-        TabHost tabHost = getTabHost();//creamos el tabhost
-        TabHost.TabSpec spec;//creamos un recurso para las propiedades de la pestaña
-        Intent intent;
-        Resources res = getResources();//obtenemos los recursos
+        //creamos el tabhost
+        tabHost = getTabHost();
         
-        intent = new Intent().setClass(this, HistoryCallActivity.class);
-        spec = tabHost.newTabSpec("HistoryCallActivity").setIndicator("Llamadas", res.getDrawable(R.drawable.icon_call_white)).setContent(intent);//se configura la pestaña con sus propiedades
-        tabHost.addTab(spec);//se carga la pestaña en el contenedor
-        //tabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.CYAN);
+        //creamos un recurso para las propiedades de la pestaña
+        TabHost.TabSpec spec;
+        
+        //obtenemos los recursos
+        Resources res = getResources();
+        
+        Intent intent = new Intent().setClass(this, HistoryCallActivity.class);
+        
+        //se configura la pestaña con sus propiedades
+        spec = tabHost.newTabSpec("HistoryCallActivity")
+        		.setIndicator("Llamadas", res.getDrawable(R.drawable.icon_call_white))
+        		.setContent(intent);
+        
+        //se carga la pestaña en el contenedor
+        tabHost.addTab(spec);
         
         intent = new Intent().setClass(this, HistorySmsActivity.class);
         spec = tabHost.newTabSpec("HistorySmsActivity").setIndicator("SMS", res.getDrawable(R.drawable.icon_sms_white)).setContent(intent);
         tabHost.addTab(spec);
-        //tabHost.getTabWidget().getChildAt(1).setBackgroundColor(color.naranja_claro);
         
         
         intent = new Intent().setClass(this, HistoryEmailActivity.class);  
         spec = tabHost.newTabSpec("HistoryEmailActivity").setIndicator("Correo", res.getDrawable(R.drawable.icon_email_white)).setContent(intent);
         tabHost.addTab(spec);
-        //tabHost.getTabWidget().getChildAt(2).setBackgroundColor(R.drawable.shape_gradient_morado);
         
         intent = new Intent().setClass(this, HistorySmsWebActivity.class);
         spec = tabHost.newTabSpec("HistorySmsWebActivity").setIndicator("SMS Web", res.getDrawable(R.drawable.icon_sms_web_white)).setContent(intent);
         tabHost.addTab(spec);
-        //tabHost.getTabWidget().getChildAt(3).setBackgroundColor(R.drawable.shape_gradient_verde);
         
+        setDefaultBackgroundColor();
+        
+        tabHost.getTabWidget().getChildAt(0).setBackgroundResource(R.drawable.shape_gradient_cian);
+        findViewById(R.id.divider).setBackgroundResource(R.drawable.shape_gradient_cian);
+        
+        tabHost.setOnTabChangedListener(this);
     }
+	
+	private void setDefaultBackgroundColor() {
+		for(int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {		
+			tabHost.getTabWidget().getChildAt(i).setBackgroundResource(R.drawable.shape_gradient_gris_oscuro);
+        }
+	}
 
+	public void onTabChanged(String tabId) {		
+		int background = 0;
+		int position = tabHost.getCurrentTab();
+		
+		setDefaultBackgroundColor();
+		
+		switch(position) {
+			case 0:
+				background = R.drawable.shape_gradient_cian;
+				break;
+			case 1:
+				background = R.drawable.shape_gradient_naranja;
+				break;
+			case 2:
+				background = R.drawable.shape_gradient_rosa;
+				break;
+			case 3:
+				background = R.drawable.shape_gradient_verde;
+				break;
+		}
+		
+		tabHost.getCurrentTabView().setBackgroundResource(background);
+		findViewById(R.id.divider).setBackgroundResource(background);
+	}
 }
