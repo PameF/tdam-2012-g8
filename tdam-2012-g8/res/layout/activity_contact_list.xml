@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
+
     <Button
-        android:id="@+id/list_contact_new"
+        android:id="@+id/contact_list_new"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_gradient_cian"
@@ -28,18 +28,18 @@
         android:layout_height="wrap_content"
         android:background="@color/gris2_oscuro"
         android:padding="5dp" >
-
+
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/contact_list_search_name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingLeft="5dp" />
-
+
         <ImageButton
-            android:id="@+id/imageButton1"
+            android:id="@+id/contact_list_search"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:background="@drawable/shape_gradient_cian"
