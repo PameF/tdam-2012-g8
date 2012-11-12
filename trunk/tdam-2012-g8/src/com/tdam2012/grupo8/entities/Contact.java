@@ -2,12 +2,13 @@ package com.tdam2012.grupo8.entities;
 
 import java.util.ArrayList;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 public class Contact {
 	private long id;
 	private String name;
-	private Uri avatar;
+	private Bitmap avatar;
 	
 	private ArrayList<String> phoneNumbers;
 	private ArrayList<String> emails;
@@ -29,11 +30,11 @@ public class Contact {
 		this.name = name;
 	}
 	
-	public Uri getAvatar() {
+	public Bitmap getAvatar() {
 		return avatar;
 	}
 	
-	public void setAvatar(Uri avatar) {
+	public void setAvatar(Bitmap avatar) {
 		this.avatar = avatar;
 	}
 	

@@ -1,5 +1,4 @@
 <resources>
-
     <string name="title_app_name">TDAM APP</string>
     <string name="menu_settings">Configuración</string>
     <string name="title_calling">Llamando...</string>
@@ -37,6 +36,8 @@
 	<string name="dialog4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt tincidunt neque, eu tempor odio tristique vitae. Etiam vulputate fermentum ante, eget aliquam mi bibendum eu. </string>
 	<string name="title_sender">Remitente</string>
 	<string name="last_message">Último mensaje...</string>
+	<string name="contact_dialog_email">Seleccione un e-mail</string>
+	<string name="contact_dialog_phone">Seleccione un teléfono</string>
 
 
 	

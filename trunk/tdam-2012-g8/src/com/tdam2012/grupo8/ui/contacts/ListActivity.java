@@ -1,11 +1,14 @@
 package com.tdam2012.grupo8.ui.contacts;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.tdam2012.grupo8.R;
 import com.tdam2012.grupo8.data.ContactsRepository;
 import com.tdam2012.grupo8.entities.Contact;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +19,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,6 +28,8 @@ import android.widget.TextView;
 public class ListActivity extends android.app.ListActivity implements OnClickListener
 {
 	public static final String SELECT_ACTION_KEY = "SELECT_ACTION";
+	public static final String EMAIL_RESULT = "EMAIL_RESULT";
+	public static final String PHONE_RESULT = "PHONE_RESULT";
 	
 	public enum OnSelectActionEnum {
 		PHONE_SELECT,
@@ -47,20 +54,39 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 	
 	public void initListAdapter() {
 		this.repository = new ContactsRepository(this);
-		this.adapter = new ListAdapter(this.repository.getContactList(""));
+		this.adapter = new ListAdapter();
         
         setListAdapter(adapter);		
+        adapter.setData(this.repository.getContactList("", true));
 	}
 	
 	public void initComponentEvents() {
-        Button btn = (Button)findViewById(R.id.list_contact_new);
-        btn.setOnClickListener(this);		
+        Button btn = (Button)findViewById(R.id.contact_list_new);
+        btn.setOnClickListener(this);
+        
+        ImageButton img = (ImageButton)findViewById(R.id.contact_list_search);
+        img.setOnClickListener(this);
 	}
 
 	public void onClick(View v) {
 		
-		Intent intent = new Intent(ListActivity.this,  NewActivity.class);
-   		startActivity(intent);
+		switch(v.getId()) {
+		case R.id.contact_list_new:
+			//Intent intent = new Intent(ListActivity.this,  NewActivity.class);
+	   		//startActivity(intent);
+			
+			Intent intent = new Intent(Intent.ACTION_INSERT, ContactsContract.Contacts.CONTENT_URI);
+			startActivity(intent);
+	   		break;
+	   		
+		case R.id.contact_list_search:
+			EditText txtFilter = (EditText)findViewById(R.id.contact_list_search_name);
+			String filter = txtFilter.getText().toString();
+			
+			adapter.setData(repository.getContactList(filter, true));
+			break;
+		}
+		
 	}
 	
 	@Override
@@ -72,9 +98,11 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 				break;
 				
 			case EMAIL_SELECT:
+				selectEmail(id);
 				break;
 				
 			case PHONE_SELECT:
+				selectPhoneNumber(id);
 				break;
 		}
 	}
@@ -88,14 +116,59 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 	    startActivity(intent);
 	}
 	
+	private void selectEmail(long id) {
+		//llamar a repository
+		final String items[] = { "vicky_rhrj@hotmail.com", "vyahumada@gmail.com" };
+
+        AlertDialog dialog = new AlertDialog.Builder(ListActivity.this)
+        	.setTitle(R.string.contact_dialog_email)
+        	.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
+        		
+	        	public void onClick(DialogInterface dialog, int whichButton) {	    			
+	        		Intent data = new Intent();
+	    			data.putExtra(EMAIL_RESULT, items[whichButton]);
+	    			
+	        		setResult(RESULT_OK, data);
+	        		finish();
+	        		
+	        		dialog.dismiss();
+	        	}
+        	}).show();
+	}
+	
+	private void selectPhoneNumber(long id) {
+		//llamar a repository
+		final String items[] = repository.getContactPhoneNumbers(id);
+
+        AlertDialog dialog = new AlertDialog.Builder(ListActivity.this)
+        	.setTitle(R.string.contact_dialog_email)
+        	.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
+        		
+	        	public void onClick(DialogInterface dialog, int whichButton) {	        		
+	        		dialog.dismiss();
+	    			
+	        		Intent data = new Intent();
+	    			data.putExtra(PHONE_RESULT, items[whichButton]);
+	    			
+	        		setResult(RESULT_OK, data);
+	        		finish();
+	        	}
+        	}).show();
+	}
+	
 	class ListAdapter extends BaseAdapter {
 
     	private List<Contact> items;
     	private LayoutInflater inflater;
     	
-    	public ListAdapter(List<Contact> items) {
-    		this.items = items;
+    	public ListAdapter() {
+    		this.items = new ArrayList<Contact>();
     		this.inflater = LayoutInflater.from(ListActivity.this);
+    	}
+    	
+    	public void setData(List<Contact> items) {
+    		this.items = items;
+    		notifyDataSetChanged();
     	}
     	
 		public int getCount() {
@@ -138,7 +211,15 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 
 			Contact item = (Contact) getItem(position);
 						
-			//holder.imageAvatar.setImageURI(item.getAvatar());
+			if(item.getAvatar() == null) {
+				item.setAvatar(repository.getContactPhoto(item.getId()));
+			}			
+			
+			if(item.getAvatar() != null)
+				holder.imageAvatar.setImageBitmap(item.getAvatar());
+			else
+				holder.imageAvatar.setImageResource(R.drawable.android_avatar);
+				
 			holder.textName.setText(item.getName());
 			holder.textPhone.setText("");
 
