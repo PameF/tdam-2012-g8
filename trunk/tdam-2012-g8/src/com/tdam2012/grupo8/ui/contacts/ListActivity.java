@@ -92,17 +92,21 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 	@Override
 	protected void onListItemClick(ListView list, View view, int position, long id) {
 		
+		String items[];
+		
 		switch(action) {
 			case SHOW_DETAILS:
 				openContactDetails(id);
 				break;
 				
 			case EMAIL_SELECT:
-				selectEmail(id);
+				items = repository.getContactEmails(id);
+				onSelectContact(id, items, EMAIL_RESULT, R.string.contact_dialog_email);
 				break;
 				
 			case PHONE_SELECT:
-				selectPhoneNumber(id);
+				items = repository.getContactPhoneNumbers(id);
+				onSelectContact(id, items, PHONE_RESULT, R.string.contact_dialog_phone);
 				break;
 		}
 	}
@@ -116,44 +120,29 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 	    startActivity(intent);
 	}
 	
-	private void selectEmail(long id) {
-		//llamar a repository
-		final String items[] = { "vicky_rhrj@hotmail.com", "vyahumada@gmail.com" };
+	private void onSelectContact(long id, final String[] items, final String key, int title) {		
+		if(items.length == 1) {
+			setSelectResult(key, items[0]);
+			return;
+		}
 
         AlertDialog dialog = new AlertDialog.Builder(ListActivity.this)
-        	.setTitle(R.string.contact_dialog_email)
+        	.setTitle(title)
         	.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
         		
-	        	public void onClick(DialogInterface dialog, int whichButton) {	    			
-	        		Intent data = new Intent();
-	    			data.putExtra(EMAIL_RESULT, items[whichButton]);
-	    			
-	        		setResult(RESULT_OK, data);
-	        		finish();
-	        		
+	        	public void onClick(DialogInterface dialog, int whichButton) {
 	        		dialog.dismiss();
+	        		setSelectResult(key, items[whichButton]);
 	        	}
         	}).show();
 	}
 	
-	private void selectPhoneNumber(long id) {
-		//llamar a repository
-		final String items[] = repository.getContactPhoneNumbers(id);
-
-        AlertDialog dialog = new AlertDialog.Builder(ListActivity.this)
-        	.setTitle(R.string.contact_dialog_email)
-        	.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
-        		
-	        	public void onClick(DialogInterface dialog, int whichButton) {	        		
-	        		dialog.dismiss();
-	    			
-	        		Intent data = new Intent();
-	    			data.putExtra(PHONE_RESULT, items[whichButton]);
-	    			
-	        		setResult(RESULT_OK, data);
-	        		finish();
-	        	}
-        	}).show();
+	private void setSelectResult(String key, String value) {
+		Intent data = new Intent();
+		data.putExtra(key, value);
+		
+		setResult(RESULT_OK, data);
+		finish();
 	}
 	
 	class ListAdapter extends BaseAdapter {
