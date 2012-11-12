@@ -11,10 +11,9 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-public class DashboardActivity extends Activity implements OnClickListener {
+public class DashboardActivity extends Activity implements OnClickListener, OnMenuItemClickListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,24 +28,10 @@ public class DashboardActivity extends Activity implements OnClickListener {
         getMenuInflater().inflate(R.menu.activity_main, menu);
                 
         MenuItem item = menu.findItem(R.id.menu_history);
-        item.setOnMenuItemClickListener(new OnMenuItemClickListener() {
-			
-			public boolean onMenuItemClick(MenuItem item) {
-				Intent intent = new Intent(DashboardActivity.this, TabHostActivity.class);
-				startActivity(intent);
-				return false;
-			}
-		});
+        item.setOnMenuItemClickListener(this);
         
         item = menu.findItem(R.id.menu_contacts);
-        item.setOnMenuItemClickListener(new OnMenuItemClickListener() {
-			
-			public boolean onMenuItemClick(MenuItem item) {
-				Intent intent = new Intent(DashboardActivity.this, ListActivity.class);
-				startActivity(intent);
-				return false;
-			}
-		});
+        item.setOnMenuItemClickListener(this);
         
         return true;
     }
@@ -72,7 +57,6 @@ public class DashboardActivity extends Activity implements OnClickListener {
 		switch(v.getId()) {
 			case R.id.dashboard_btn_llamadas:
 				intent = new Intent(this, ListActivity.class);
-				//intent = new Intent(this, CallKeyboardActivity.class);
 				break;
 				
 			case R.id.dashboard_btn_sms:
@@ -89,8 +73,26 @@ public class DashboardActivity extends Activity implements OnClickListener {
 		}
 		
 		if(intent != null)
-		{
 			startActivity(intent);
+	}
+
+	public boolean onMenuItemClick(MenuItem item) {
+		Intent intent = null;
+		
+		switch(item.getItemId()) {
+			case R.id.menu_contacts:
+				intent = new Intent(DashboardActivity.this, ListActivity.class);
+				intent.putExtra(ListActivity.SELECT_ACTION_KEY, ListActivity.OnSelectActionEnum.SHOW_DETAILS);
+				break;
+				
+			case R.id.menu_history:
+				intent = new Intent(DashboardActivity.this, TabHostActivity.class);
+				break;
 		}
+		
+		if(intent != null)
+			startActivity(intent);
+		
+		return false;
 	}
 }
