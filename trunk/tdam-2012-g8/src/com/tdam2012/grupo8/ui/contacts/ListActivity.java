@@ -27,7 +27,10 @@ import android.widget.TextView;
 
 public class ListActivity extends android.app.ListActivity implements OnClickListener
 {
+	// Parámetro que indica que tipo de comportamiento debe tener al seleccionar un contacto
 	public static final String SELECT_ACTION_KEY = "SELECT_ACTION";
+	
+	// Identificadores de los posibles resultados que devuelve esta activity
 	public static final String EMAIL_RESULT = "EMAIL_RESULT";
 	public static final String PHONE_RESULT = "PHONE_RESULT";
 	
@@ -121,6 +124,7 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 	}
 	
 	private void onSelectContact(long id, final String[] items, final String key, int title) {		
+		
 		if(items.length == 1) {
 			setSelectResult(key, items[0]);
 			return;
@@ -134,6 +138,7 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 	        		dialog.dismiss();
 	        		setSelectResult(key, items[whichButton]);
 	        	}
+	        	
         	}).show();
 	}
 	
