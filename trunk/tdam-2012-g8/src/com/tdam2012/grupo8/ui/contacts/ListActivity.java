@@ -219,5 +219,6 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 
 			return convertView;
 		}
+		
     }
 }

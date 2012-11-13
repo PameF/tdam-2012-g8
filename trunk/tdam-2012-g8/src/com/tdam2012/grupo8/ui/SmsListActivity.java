@@ -1,9 +1,12 @@
 package com.tdam2012.grupo8.ui;
 
 import com.tdam2012.grupo8.R;
+import com.tdam2012.grupo8.entities.Contact;
+import com.tdam2012.grupo8.ui.contacts.ListActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +15,8 @@ import android.widget.LinearLayout;
 
 public class SmsListActivity extends Activity 
 {
+	private static final int CONTACT_PHONE_NUMBER_REQUEST = 1;
+	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms_list);
@@ -20,10 +25,13 @@ public class SmsListActivity extends Activity
     	btn.setOnClickListener(new OnClickListener(){
     		public void onClick(View v)
         	{
-        		Intent i = new Intent(SmsListActivity.this,  SmsNewActivity.class);
-        		startActivity(i);
+        		Intent i = new Intent(SmsListActivity.this, ListActivity.class);
+        		i.putExtra(ListActivity.SELECT_ACTION_KEY, ListActivity.OnSelectActionEnum.PHONE_SELECT);
+				startActivityForResult(i, CONTACT_PHONE_NUMBER_REQUEST);
+		
         	}
     	}); 
+    	
     	
       LinearLayout list = (LinearLayout)findViewById(R.id.sms_list_item1);
       list.setOnClickListener(new OnClickListener(){
@@ -34,4 +42,19 @@ public class SmsListActivity extends Activity
          	}
      	}); 
     }
+	
+	 @Override
+	 protected void onActivityResult(int requestCode, int resultCode, Intent data) 
+	 {	    		
+		 	if(resultCode == RESULT_OK) 
+		 	{		
+		 		String phoneNumber = data.getExtras().getString(ListActivity.PHONE_RESULT);
+		 		Intent intent = new Intent(SmsListActivity.this, SmsNewActivity.class);
+		 		Bundle bundle = new Bundle();
+		 		bundle.putString("num_phone", phoneNumber);
+		 		intent.putExtras(bundle);
+		 		startActivity(intent);
+		 	}	    	
+	}
+	
 }
