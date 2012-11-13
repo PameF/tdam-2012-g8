@@ -83,6 +83,7 @@ public class DashboardActivity extends Activity implements OnClickListener, OnMe
 				
 			case R.id.dashboard_btn_sms:
 				intent = new Intent(this, SmsListActivity.class);
+				
 				startActivity(intent);
 				break;
 				
