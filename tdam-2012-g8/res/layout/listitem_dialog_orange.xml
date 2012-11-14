@@ -6,14 +6,15 @@
     android:padding="5dp" >
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="100"
         android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:baselineAligned="false" >
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -36,28 +37,29 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="100"
                 android:background="@color/naranja_claro"
                 android:orientation="vertical" >
-
+
                 <TextView
-                    android:id="@+id/TextView01"
+                    android:id="@+id/sms_dialog_message"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:text="@string/dialog3"
                     android:textColor="@color/blanco" />
-
+
                 <TextView
-                    android:id="@+id/textView1"
+                    android:id="@+id/sms_dialog_date"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:paddingLeft="10dp"
                     android:text="@string/date"
                     android:textColor="@color/gris2_claro" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -69,7 +71,8 @@
                     android:id="@+id/ImageView02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/dialog_right_orange_corner_12" />
+                    android:src="@drawable/dialog_right_orange_corner_12"
+                    android:contentDescription="" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -90,10 +93,11 @@
                 android:id="@+id/imageView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/dialog_right_orange_corner_21" />
+                android:src="@drawable/dialog_right_orange_corner_21"
+                android:contentDescription="" />
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="100"
                 android:background="@color/naranja_claro"
@@ -104,30 +108,18 @@
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/dialog_right_orange_corner_22" />
+                android:src="@drawable/dialog_right_orange_corner_22"
+                android:contentDescription="" />
         </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="100"
-            android:orientation="vertical" >
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/dialog_right_orange" />
-
-    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:src="@drawable/dialog_right_orange"
+        android:contentDescription="" />
 
 </LinearLayout>

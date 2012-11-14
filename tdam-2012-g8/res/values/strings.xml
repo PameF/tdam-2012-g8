@@ -38,6 +38,11 @@
 	<string name="last_message">Último mensaje...</string>
 	<string name="contact_dialog_email">Seleccione un e-mail</string>
 	<string name="contact_dialog_phone">Seleccione un teléfono</string>
+	<string name="user_login_nickname">Usuario</string>
+	<string name="user_login_password">Clave</string>
+	<string name="user_login_login">Ingresar</string>
+	<string name="user_login_register">Registrarme</string>
+	<string name="sms_list_contact_message">Mensaje</string>
 
 
 	

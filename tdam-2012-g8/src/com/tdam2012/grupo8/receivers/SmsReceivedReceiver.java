@@ -1,4 +1,4 @@
-package com.tdam2012.grupo8.ui;
+package com.tdam2012.grupo8.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.telephony.gsm.SmsMessage;
 import android.widget.Toast;
 
-public class SmsReceiverActivity extends BroadcastReceiver 
+public class SmsReceivedReceiver extends BroadcastReceiver 
 {
 	public void onReceive(Context context, Intent intent)
 	{
@@ -31,8 +31,5 @@ public class SmsReceiverActivity extends BroadcastReceiver
 			
 			Toast.makeText(context, str, Toast.LENGTH_SHORT).show();//muestra el nuevo sms q ha llegado
 		}
-		
 	}
-
-
 }

@@ -49,9 +49,21 @@
        	<activity android:name=".ui.HistorySmsWebActivity" ></activity>
        	<activity android:name=".ui.TabHostActivity" ></activity>
     
-		<receiver android:name=".ui.SmsReceiverActivity">
+		<receiver android:name=".receivers.SmsReceivedReceiver">
     		<intent-filter>
         		<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+        	</intent-filter>    
+    	</receiver>
+    	
+		<receiver android:name=".receivers.SmsSentReceiver">
+    		<intent-filter>
+        		<action android:name="SMS_SENT" />
+        	</intent-filter>    
+    	</receiver>
+    	
+		<receiver android:name=".receivers.SmsDeliveredReceiver">
+    		<intent-filter>
+        		<action android:name="SMS_DELIVERED" />
         	</intent-filter>    
     	</receiver>
     	

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
@@ -14,43 +14,39 @@
         android:padding="5dp" >
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/sms_list_contact_message"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="@string/sms_list_contact_message"
             android:inputType="text" >
 
             <requestFocus />
-            
         </EditText>
-		
+
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/sms_list_contact_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_send" />
-			
     </LinearLayout>
 
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:fillViewport="true"
-		android:layout_above="@id/general_pnl_send_message" >
-
-        <LinearLayout
+        android:layout_above="@id/general_pnl_send_message" >
+
+        <ListView
+            android:id="@android:id/list"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@drawable/shape_gradient_gris"
-            android:orientation="vertical" >
+            android:layout_weight="1"
+            android:background="@drawable/shape_gradient_gris" >
 
-			<include layout="@layout/listitem_dialog_blue" />
-            <include layout="@layout/listitem_dialog_orange" />
-            <include layout="@layout/listitem_dialog_blue" />
+        </ListView>
 
-        </LinearLayout>
-
-    </ScrollView>
+    </LinearLayout>
 
 </RelativeLayout>
