@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_gradient_gris_oscuro"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <EditText
+        android:id="@+id/user_new_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/user_login_nickname" >
+
+        <requestFocus />
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/user_new_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/user_login_password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/user_new_password_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/user_new_password_confirm"
+        android:inputType="textPassword" >
+    </EditText>
+
+    <Button
+        android:id="@+id/user_new_register"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/user_login_register" />
+
+</LinearLayout>
