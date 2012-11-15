@@ -20,12 +20,15 @@
         android:label="@string/title_app_name"
         android:theme="@style/AppTheme" >
         
-        <activity android:name=".ui.DashboardActivity" >
+        <activity android:name=".ui.user.LoginActivity" android:noHistory="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity android:name=".ui.user.NewActivity" android:noHistory="true" ></activity>
+        <activity android:name=".ui.DashboardActivity" ></activity>
         
         <activity android:name=".ui.CallKeyboardActivity" ></activity>
         <activity android:name=".ui.CallActivity" ></activity>

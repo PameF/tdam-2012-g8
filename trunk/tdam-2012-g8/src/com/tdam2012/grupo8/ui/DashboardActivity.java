@@ -1,7 +1,6 @@
 package com.tdam2012.grupo8.ui;
 
 import com.tdam2012.grupo8.R;
-import com.tdam2012.grupo8.networking.RegisterUserService;
 import com.tdam2012.grupo8.ui.contacts.ListActivity;
 
 import android.net.Uri;

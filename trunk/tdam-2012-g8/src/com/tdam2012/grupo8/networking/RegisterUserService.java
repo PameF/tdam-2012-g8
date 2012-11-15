@@ -1,9 +1,11 @@
 package com.tdam2012.grupo8.networking;
 
+import com.tdam2012.grupo8.base.Preferences;
 import com.tdam2012.grupo8.ui.DashboardActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -31,6 +33,15 @@ public class RegisterUserService extends AsyncTask<Object, Void, String> {
 		boolean success = processRequest(result, message);
 		
 		if(success) {
+			
+			SharedPreferences preferences = context.getSharedPreferences(Preferences.PREFERENCE_USER, context.MODE_PRIVATE);
+			SharedPreferences.Editor editor = preferences.edit();
+			
+			editor.putBoolean(Preferences.PREFERENCE_USER_IS_LOGGED, true);
+			editor.putString(Preferences.PREFERENCE_USER_NAME, username);
+			editor.putString(Preferences.PREFERENCE_USER_PASSWORD, password);
+			editor.commit();
+			
 			Intent intent = new Intent(context, DashboardActivity.class);
 			context.startActivity(intent);
 		}
