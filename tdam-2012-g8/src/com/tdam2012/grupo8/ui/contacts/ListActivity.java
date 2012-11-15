@@ -34,6 +34,7 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 	public static final String EMAIL_RESULT = "EMAIL_RESULT";
 	public static final String PHONE_RESULT = "PHONE_RESULT";
 	public static final String CONTACT_ID = "CONTACT_ID";
+	public static final String CONTACT_NAME = "CONTACT_NAME";
 	
 	public enum OnSelectActionEnum {
 		PHONE_SELECT,
@@ -105,12 +106,12 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 				
 			case EMAIL_SELECT:
 				items = repository.getContactEmails(id);
-				onSelectContact(id, items, EMAIL_RESULT, R.string.contact_dialog_email);
+				onSelectContact(position, items, EMAIL_RESULT, R.string.contact_dialog_email);
 				break;
 				
 			case PHONE_SELECT:
 				items = repository.getContactPhoneNumbers(id);
-				onSelectContact(id, items, PHONE_RESULT, R.string.contact_dialog_phone);
+				onSelectContact(position, items, PHONE_RESULT, R.string.contact_dialog_phone);
 				break;
 		}
 	}
@@ -124,10 +125,10 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 	    startActivity(intent);
 	}
 	
-	private void onSelectContact(final long id, final String[] items, final String key, int title) {		
+	private void onSelectContact(final int position, final String[] items, final String key, int title) {		
 		
 		if(items.length == 1) {
-			setSelectResult(id, key, items[0]);
+			setSelectResult(position, key, items[0]);
 			return;
 		}
 
@@ -137,16 +138,20 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
         		
 	        	public void onClick(DialogInterface dialog, int whichButton) {
 	        		dialog.dismiss();
-	        		setSelectResult(id, key, items[whichButton]);
+	        		setSelectResult(position, key, items[whichButton]);
 	        	}
 	        	
         	}).show();
 	}
 	
-	private void setSelectResult(long id, String key, String value) {
+	private void setSelectResult(int position, String key, String value) {
+		
+		Contact contact = (Contact)adapter.getItem(position);
 		Intent data = new Intent();
+		
 		data.putExtra(key, value);
-		data.putExtra(CONTACT_ID, id);
+		data.putExtra(CONTACT_ID, contact.getId());
+		data.putExtra(CONTACT_NAME, contact.getName());
 		
 		setResult(RESULT_OK, data);
 		finish();
