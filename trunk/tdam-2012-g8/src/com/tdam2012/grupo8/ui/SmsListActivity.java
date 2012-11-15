@@ -43,9 +43,11 @@ public class SmsListActivity extends Activity implements OnClickListener
 		 if(resultCode == RESULT_OK && requestCode == CONTACT_PHONE_NUMBER_REQUEST) 
 		 {		
 			 String phoneNumber = data.getExtras().getString(ListActivity.PHONE_RESULT);
+			 long contact = data.getExtras().getLong(ListActivity.CONTACT_ID);
 			
 			 Intent intent = new Intent(SmsListActivity.this, SmsListContactActivity.class);
 			 intent.putExtra(SmsListContactActivity.PHONE_NUMBER_KEY, phoneNumber);
+			 intent.putExtra(SmsListContactActivity.CONTACT_ID_KEY, contact);
 			
 			 startActivity(intent);
 		 }
