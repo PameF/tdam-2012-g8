@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class SmsSentReceiver extends BroadcastReceiver {
 	
-	public static final String NAME = "SMS_SENT";
+	public static final String NAME = "com.tdam2012.grupo8.receiver.SMS_SENT";
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
