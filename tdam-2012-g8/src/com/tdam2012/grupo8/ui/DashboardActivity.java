@@ -1,6 +1,7 @@
 package com.tdam2012.grupo8.ui;
 
 import com.tdam2012.grupo8.R;
+import com.tdam2012.grupo8.networking.RegisterUserService;
 import com.tdam2012.grupo8.ui.contacts.ListActivity;
 
 import android.net.Uri;
@@ -23,7 +24,9 @@ public class DashboardActivity extends Activity implements OnClickListener, OnMe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         
-        inicializarEventos ();
+        inicializarEventos();
+        
+        //new RegisterUserService().execute(this, "vicky", "123465");
     }
 
     @Override

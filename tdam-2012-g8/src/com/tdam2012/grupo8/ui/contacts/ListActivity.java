@@ -33,6 +33,7 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 	// Identificadores de los posibles resultados que devuelve esta activity
 	public static final String EMAIL_RESULT = "EMAIL_RESULT";
 	public static final String PHONE_RESULT = "PHONE_RESULT";
+	public static final String CONTACT_ID = "CONTACT_ID";
 	
 	public enum OnSelectActionEnum {
 		PHONE_SELECT,
@@ -123,10 +124,10 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 	    startActivity(intent);
 	}
 	
-	private void onSelectContact(long id, final String[] items, final String key, int title) {		
+	private void onSelectContact(final long id, final String[] items, final String key, int title) {		
 		
 		if(items.length == 1) {
-			setSelectResult(key, items[0]);
+			setSelectResult(id, key, items[0]);
 			return;
 		}
 
@@ -136,15 +137,16 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
         		
 	        	public void onClick(DialogInterface dialog, int whichButton) {
 	        		dialog.dismiss();
-	        		setSelectResult(key, items[whichButton]);
+	        		setSelectResult(id, key, items[whichButton]);
 	        	}
 	        	
         	}).show();
 	}
 	
-	private void setSelectResult(String key, String value) {
+	private void setSelectResult(long id, String key, String value) {
 		Intent data = new Intent();
 		data.putExtra(key, value);
+		data.putExtra(CONTACT_ID, id);
 		
 		setResult(RESULT_OK, data);
 		finish();

@@ -1,35 +1,51 @@
 package com.tdam2012.grupo8.receivers;
 
+import java.util.Date;
+
+import com.tdam2012.grupo8.ui.adapters.ContactSmsListAdapter;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.gsm.SmsMessage;
-import android.widget.Toast;
 
 public class SmsReceivedReceiver extends BroadcastReceiver 
 {
+	public static final String NAME = "android.provider.Telephony.SMS_RECEIVED";
+	
+	private ContactSmsListAdapter adapter;
+	private String phoneNumber;
+	
+	public SmsReceivedReceiver(String phone, ContactSmsListAdapter adapter) {
+		this.adapter = adapter;
+	}
+	
+	@SuppressWarnings("deprecation")
 	public void onReceive(Context context, Intent intent)
 	{
-		//toma el sms aprobado
+		com.tdam2012.grupo8.entities.SmsMessage sms;
 		Bundle bundle = intent.getExtras();
-		SmsMessage[] msgs = null;
-		String str = "";
+
 		if(bundle != null)
 		{
 			//si llega un sms lo recupera
 			Object[] pdus = (Object[]) bundle.get("pdus");
-			msgs = new SmsMessage[pdus.length];
-			for(int i = 0; i < msgs.length; i++)
-			{
-				msgs[i] = SmsMessage.createFromPdu((byte[])pdus[i]);
-				str += "SMS from " + msgs[i].getOriginatingAddress();
-				str += ":";
-				str += msgs[i].getMessageBody().toString();
-				str += "\n";
-			}
 			
-			Toast.makeText(context, str, Toast.LENGTH_SHORT).show();//muestra el nuevo sms q ha llegado
+			for(int i = 0; i < pdus.length; i++)
+			{
+				SmsMessage message = SmsMessage.createFromPdu((byte[])pdus[i]);
+				
+				if(message.getOriginatingAddress().endsWith(phoneNumber)) {
+					
+					sms = new com.tdam2012.grupo8.entities.SmsMessage();
+					
+					sms.setMessage(message.getMessageBody().toString());
+					sms.setReceivedDate(new Date());
+					
+					adapter.addMessage(sms);
+				}
+			}
 		}
 	}
 }
