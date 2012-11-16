@@ -1,21 +1,14 @@
 package com.tdam2012.grupo8.networking;
 
-import java.io.IOException;
 import java.io.StringReader;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
-import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.EntityResolver;
-import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
 import com.tdam2012.grupo8.base.Preferences;
 import com.tdam2012.grupo8.ui.DashboardActivity;
@@ -46,7 +39,7 @@ public class RegisterUserService extends AsyncTask<Object, Void, String> {
 	@Override
 	protected void onPostExecute(String result) {
 
-		String message = processRequest(result);		
+		String message = MessageSenderService.processRequest(result);		
 		if(message == null) {
 			
 			SharedPreferences preferences = context.getSharedPreferences(Preferences.PREFERENCE_USER, context.MODE_PRIVATE);
@@ -74,34 +67,5 @@ public class RegisterUserService extends AsyncTask<Object, Void, String> {
 					 "</action>";
 		
 		return xml;
-	}
-		
-	private String processRequest(String xml) {
-		
-		String message = null;
-				
-		try {
-			StringReader reader = new StringReader(xml);
-			InputSource input = new InputSource(reader);
-			
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-				 
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document document = builder.parse(input);
-			
-			Element root = document.getDocumentElement();
-			String type = root.getAttribute("type");
-			
-			if(type.compareTo("error") == 0) {
-				Node detail = root.getChildNodes().item(0);
-				detail = detail.getAttributes().getNamedItem("description");
-				message = detail.getTextContent();
-			}
-			
-		} catch (Exception e) {
-			message = e.getMessage();
-		}
-		
-		return message;
 	}
 }
