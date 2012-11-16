@@ -26,7 +26,7 @@ public class IncomingCallReceiver extends BroadcastReceiver{
 	String phoneNumber;
 	long contactId;
 	Contact contact;
-	ActionRegistry reg = new ActionRegistry();
+	
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -39,11 +39,34 @@ public class IncomingCallReceiver extends BroadcastReceiver{
         contact = contactRep.getContactById(contactId);
         
      	ActionsRegistryRepository repository = new ActionsRegistryRepository(context);
-       	repository.insertRegistration(reg);
+     	ActionRegistry reg = new ActionRegistry();
         
+       	Bundle extras = intent.getExtras();
+       	if (extras != null){
+       		String state = extras.getString(TelephonyManager.EXTRA_STATE);
+       		if (state.equals(TelephonyManager.CALL_STATE_RINGING)){
+       		
+       			reg.setAction(ActionEnum.INCOMING_CALL);
+		       	reg.setContactId(contactId);
+		       	reg.setContactName(contact.getName());
+		       	reg.setContactPhoneNumber(phoneNumber);
+		       	reg.setDate(new Date());
+       		}
+       		else{
+       			if (state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)){
+       				
+           			reg.setAction(ActionEnum.MISSED_CALL);
+    		       	reg.setContactId(contactId);
+    		       	reg.setContactName(contact.getName());
+    		       	reg.setContactPhoneNumber(phoneNumber);
+    		       	reg.setDate(new Date());
+           		}
+       		}
+       	}
+       	repository.insertRegistration(reg);
 	}
 	
-	public void onCallStateChanged(int state, String incomingNumber){
+	/*public void onCallStateChanged(int state, String incomingNumber){
 	
 		switch (state)
 		{
@@ -68,7 +91,7 @@ public class IncomingCallReceiver extends BroadcastReceiver{
 				break;						
 		}
 				                  
-	}
+	}*/
 		
 }
 

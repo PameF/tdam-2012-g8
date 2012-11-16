@@ -53,6 +53,18 @@
        	<activity android:name=".ui.HistoryEmailActivity" ></activity>
        	<activity android:name=".ui.HistorySmsWebActivity" ></activity>
        	<activity android:name=".ui.TabHostActivity" ></activity>
+       	
+       	<receiver android:name=".receivers.IncomingCallReceiver">
+    		<intent-filter>
+        		<action android:name="com.tdam2012.grupo8.receiver.INCOMING_CALL" />
+        	</intent-filter>    
+    	</receiver>
+    	
+    	<receiver android:name=".receivers.OutgoingCallReceiver">
+    		<intent-filter>
+        		<action android:name="com.tdam2012.grupo8.receiver.OUTGOING_CALL" />
+        	</intent-filter>    
+    	</receiver>
     
 		<!-- 
 		<receiver android:name=".receivers.SmsReceivedReceiver">
@@ -70,6 +82,18 @@
 		<receiver android:name=".receivers.SmsDeliveredReceiver">
     		<intent-filter>
         		<action android:name="com.tdam2012.grupo8.receiver.SMS_DELIVERED" />
+        	</intent-filter>    
+    	</receiver>
+    	
+    	<receiver android:name=".receivers.IncomingCallReceiver">
+    		<intent-filter>
+        		<action android:name="com.tdam2012.grupo8.receiver.INCOMING_CALL" />
+        	</intent-filter>    
+    	</receiver>
+    	
+    	<receiver android:name=".receivers.OutgoingCallReceiver">
+    		<intent-filter>
+        		<action android:name="com.tdam2012.grupo8.receiver.OUTGOING_CALL" />
         	</intent-filter>    
     	</receiver>
     	-->
