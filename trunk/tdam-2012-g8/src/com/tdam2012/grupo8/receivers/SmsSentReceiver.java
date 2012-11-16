@@ -35,7 +35,8 @@ public class SmsSentReceiver extends BroadcastReceiver {
 				
 		        ContactsRepository contactRep = new ContactsRepository(context);
 		        Contact contact = contactRep.getContactById(contactId);
-		        
+		        		        
+		        // Guardo del envío de sms en el registro del contacto
 				ActionRegistry reg = new ActionRegistry();
 	 	       	reg.setAction(ActionEnum.SENT_MESSAGE);
 	 	       	reg.setContactId(contact.getId());

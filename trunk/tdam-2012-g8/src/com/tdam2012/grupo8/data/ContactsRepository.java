@@ -147,18 +147,20 @@ public class ContactsRepository {
 	public Contact getContactByPhoneNumber(String phoneNumber) {
 		
 		Contact contact = null;
-		Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode("1555521" + phoneNumber)); 
-	    
-		Cursor cursor = context.getContentResolver().query(uri, null, null, null, null); 
-
-	    if (cursor.moveToFirst()) 
+		long contactId = 0;
+		String number = "";
+		
+		Cursor cursor = this.context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
+		
+	    while (cursor.moveToFirst()) 
 	    { 
-	    	String id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
-			String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-				
-			contact = new Contact();					
-			contact.setId(Long.parseLong(id));
-			contact.setName(name);
+	    	number = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+	    	contactId = cursor.getLong(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID));
+	    	
+	    	if(number.contains(phoneNumber) || phoneNumber.contains(number)) {
+	    		contact = getContactById(contactId);
+	    		break;
+	    	}			
 	    } 
 
 	    cursor.close();
