@@ -11,6 +11,7 @@ import com.tdam2012.grupo8.ui.contacts.ListActivity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.telephony.TelephonyManager;
 
 public class OutgoingCallReceiver extends BroadcastReceiver {
@@ -33,9 +34,21 @@ public class OutgoingCallReceiver extends BroadcastReceiver {
         
         ActionsRegistryRepository repository = new ActionsRegistryRepository(context);
 		repository.insertRegistration(reg);
+		Bundle extras = intent.getExtras();
+       	if (extras != null){
+       		String state = extras.getString(TelephonyManager.EXTRA_STATE);
+       		if (state.equals(TelephonyManager.EXTRA_STATE_IDLE)){
+       			reg.setAction(ActionEnum.OUTGOING_CALL);
+		       	reg.setContactId(contactId);
+		       	reg.setContactName(contact.getName());
+		       	reg.setContactPhoneNumber(phoneNumber);
+		       	reg.setDate(new Date());
+       		}
+
+       	}
 		
         }
-		
+	/*	
 	public void onCallStateChanged(int state, String incomingNumber){
 
 		ActionRegistry reg = new ActionRegistry();
@@ -53,5 +66,6 @@ public class OutgoingCallReceiver extends BroadcastReceiver {
 			  	break;
 		}
 	}
+	*/
 		
 }
