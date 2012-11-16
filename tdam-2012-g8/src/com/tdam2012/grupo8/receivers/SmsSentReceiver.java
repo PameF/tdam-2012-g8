@@ -31,16 +31,17 @@ public class SmsSentReceiver extends BroadcastReceiver {
 				
 				String phoneNumber = intent.getExtras().getString(SmsListContactActivity.PHONE_NUMBER_KEY);
 		        long contactId = intent.getExtras().getLong(SmsListContactActivity.CONTACT_ID_KEY);
+		        String messageBody = intent.getExtras().getString(SmsListContactActivity.MESSAGE_KEY);
 				
 		        ContactsRepository contactRep = new ContactsRepository(context);
 		        Contact contact = contactRep.getContactById(contactId);
 		        
 				ActionRegistry reg = new ActionRegistry();
 	 	       	reg.setAction(ActionEnum.SENT_MESSAGE);
-	 	       	reg.setContactId(contactId);
+	 	       	reg.setContactId(contact.getId());
 	 	       	reg.setContactName(contact.getName());
 	 	       	reg.setContactPhoneNumber(phoneNumber);
-	 	       	reg.setMessage(message);
+	 	       	reg.setMessage(messageBody);
 	 	       	reg.setDate(new Date());
 	 	       
 	 	       	ActionsRegistryRepository repository = new ActionsRegistryRepository(context);
