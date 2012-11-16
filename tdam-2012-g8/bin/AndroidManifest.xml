@@ -12,18 +12,23 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
   	<uses-permission android:name="android.permission.RECEIVE_SMS" />
+  	<uses-permission android:name="android.permission.READ_SMS" />
+  	<uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/title_app_name"
         android:theme="@style/AppTheme" >
         
-        <activity android:name=".ui.DashboardActivity" >
+        <activity android:name=".ui.user.LoginActivity" android:noHistory="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity android:name=".ui.user.NewActivity" android:noHistory="true" ></activity>
+        <activity android:name=".ui.DashboardActivity" ></activity>
         
         <activity android:name=".ui.CallKeyboardActivity" ></activity>
         <activity android:name=".ui.CallActivity" ></activity>
@@ -49,11 +54,25 @@
        	<activity android:name=".ui.HistorySmsWebActivity" ></activity>
        	<activity android:name=".ui.TabHostActivity" ></activity>
     
-		<receiver android:name=".ui.SmsReceiverActivity">
+		<!-- 
+		<receiver android:name=".receivers.SmsReceivedReceiver">
     		<intent-filter>
         		<action android:name="android.provider.Telephony.SMS_RECEIVED" />
         	</intent-filter>    
     	</receiver>
+    	
+		<receiver android:name=".receivers.SmsSentReceiver">
+    		<intent-filter>
+        		<action android:name="com.tdam2012.grupo8.receiver.SMS_SENT" />
+        	</intent-filter>    
+    	</receiver>
+    	
+		<receiver android:name=".receivers.SmsDeliveredReceiver">
+    		<intent-filter>
+        		<action android:name="com.tdam2012.grupo8.receiver.SMS_DELIVERED" />
+        	</intent-filter>    
+    	</receiver>
+    	-->
     	
     </application>   
 

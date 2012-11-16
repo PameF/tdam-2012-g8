@@ -20,6 +20,8 @@ public class SmsSentReceiver extends BroadcastReceiver {
 		{
 			case Activity.RESULT_OK:
 				message = "SMS sent";
+				
+				// TODO PAME Agregar registro
 				break;
 		
 			case SmsManager.RESULT_ERROR_GENERIC_FAILURE:

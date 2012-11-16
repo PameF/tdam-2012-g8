@@ -96,6 +96,7 @@ public class SmsListContactActivity extends ListActivity implements OnClickListe
 			
 			adapter.addMessage(phoneNumber, message);
 			editText.setText("");
+			
 		}
 	}
 }

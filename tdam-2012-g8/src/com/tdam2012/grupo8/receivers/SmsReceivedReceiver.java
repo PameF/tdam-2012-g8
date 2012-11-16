@@ -44,6 +44,8 @@ public class SmsReceivedReceiver extends BroadcastReceiver
 					sms.setReceivedDate(new Date());
 					
 					adapter.addMessage(sms);
+					
+					//TODO PAME Agregar registro
 				}
 			}
 		}
