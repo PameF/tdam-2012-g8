@@ -3,9 +3,9 @@ package com.tdam2012.grupo8.ui;
 import java.util.Date;
 
 import com.tdam2012.grupo8.R;
-import com.tdam2012.grupo8.data.RegistrationRepository;
-import com.tdam2012.grupo8.data.RegistrationRepository.ActionEnum;
-import com.tdam2012.grupo8.entities.Registration;
+import com.tdam2012.grupo8.data.ActionsRegistryRepository;
+import com.tdam2012.grupo8.data.ActionsRegistryRepository.ActionEnum;
+import com.tdam2012.grupo8.entities.ActionRegistry;
 import com.tdam2012.grupo8.ui.contacts.ListActivity;
 
 import android.net.Uri;
@@ -76,14 +76,14 @@ public class DashboardActivity extends Activity implements OnClickListener, OnMe
 	    			Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
 	    	        startActivity(callIntent);
 	    	        
-	    	       Registration reg = new Registration();
+	    	       ActionRegistry reg = new ActionRegistry();
 	    	       reg.setAction(ActionEnum.MISSED_CALL);
-	    	       reg.setId_contact(contactId);
-	    	       reg.setName_contact(name);
-	    	       reg.setNumber_phone_contact(phoneNumber);
+	    	       reg.setContactId(contactId);
+	    	       reg.setContactName(name);
+	    	       reg.setContactPhoneNumber(phoneNumber);
 	    	       reg.setDate(new Date());
 	    	       
-	    	       RegistrationRepository rr = new RegistrationRepository(this);
+	    	       ActionsRegistryRepository rr = new ActionsRegistryRepository(this);
 	    	       rr.insertRegistration(reg);    	      
 	    		}
 	    		break;
