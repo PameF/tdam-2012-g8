@@ -1,7 +1,6 @@
 package com.tdam2012.grupo8.ui;
 
 import com.tdam2012.grupo8.R;
-import com.tdam2012.grupo8.data.SmsRepository;
 import com.tdam2012.grupo8.receivers.SmsDeliveredReceiver;
 import com.tdam2012.grupo8.receivers.SmsReceivedReceiver;
 import com.tdam2012.grupo8.receivers.SmsSentReceiver;
@@ -43,9 +42,6 @@ public class SmsListContactActivity extends ListActivity implements OnClickListe
         Button enviar = (Button)findViewById(R.id.sms_list_contact_send);
         enviar.setOnClickListener(this);
         
-        SmsRepository repository = new SmsRepository(this);
-        repository.getContactConversations("", false);
-
         inicializeListView();
     }
 	
@@ -83,11 +79,13 @@ public class SmsListContactActivity extends ListActivity implements OnClickListe
 			
 			Intent sentIntent = new Intent(SmsSentReceiver.NAME);
 			sentIntent.putExtra(CONTACT_ID_KEY, contact);
+			sentIntent.putExtra(PHONE_NUMBER_KEY, phoneNumber);
 			
 			PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, sentIntent, 0);
 			
 			Intent deliveredIntent =  new Intent(SmsDeliveredReceiver.NAME);
 			deliveredIntent.putExtra(CONTACT_ID_KEY, contact);
+			deliveredIntent.putExtra(PHONE_NUMBER_KEY, phoneNumber);
 			
 			PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, deliveredIntent, 0);
 									

@@ -120,13 +120,37 @@ public class ContactsRepository {
 	    return photo;
 	}
 	
+	public Contact getContactById(long id) {
+		
+		Contact contact = null;		
+		ContentResolver resolver = this.context.getContentResolver();
+
+	    Cursor cursor = resolver.query(
+				ContactsContract.Contacts.CONTENT_URI, 
+				null, 
+				ContactsContract.Contacts._ID + " = ?", 
+				new String[] { String.valueOf(id) }, 
+				null);
+
+	    if (cursor.moveToFirst()) 
+	    { 
+			contact = new Contact();					
+			contact.setId(id);
+			contact.setName(cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)));
+	    } 
+
+	    cursor.close();
+
+	    return contact; 
+	}
+		
 	public Contact getContactByPhoneNumber(String phoneNumber) {
 		
 		Contact contact = null;
 		Uri uri;
 		Uri baseUri = ContactsContract.PhoneLookup.CONTENT_FILTER_URI;
         
-	    uri = Uri.withAppendedPath(baseUri, Uri.encode(phoneNumber)); 
+	    uri = Uri.withAppendedPath(baseUri, Uri.encode("1555521" + phoneNumber)); 
 	    Cursor cursor = context.getContentResolver().query(uri, null, null, null, null); 
 
 	    if (cursor.moveToFirst()) 

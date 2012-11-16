@@ -73,17 +73,17 @@ public class ContactSmsListAdapter extends BaseAdapter {
 		int layout = sent ? sentView : receivedView;;
 		Date date = sent ? item.getSentDate() : item.getReceivedDate();
 		
-		if (convertView == null) {
+		/*if (convertView == null) {*/
 			
 			convertView = createView(layout, sent);
 			holder = (Holder) convertView.getTag();
 			
-		} else {
+		/*} else {
 			holder = (Holder) convertView.getTag();
 			
 			if(holder.sent != sent)
 				createView(layout, sent);
-		}
+		}*/
 		
 		holder.textMessage.setText(item.getMessage());
 		holder.textDate.setText(new SimpleDateFormat("dd MMM, kk:mm").format(date));
