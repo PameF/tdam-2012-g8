@@ -92,9 +92,10 @@ public class RegisterUserService extends AsyncTask<Object, Void, String> {
 			Element root = document.getDocumentElement();
 			String type = root.getAttribute("type");
 			
-			if(type == "error") {
+			if(type.compareTo("error") == 0) {
 				Node detail = root.getChildNodes().item(0);
-				message = getNodeText(detail);
+				detail = detail.getAttributes().getNamedItem("description");
+				message = detail.getTextContent();
 			}
 			
 		} catch (Exception e) {
@@ -103,17 +104,4 @@ public class RegisterUserService extends AsyncTask<Object, Void, String> {
 		
 		return message;
 	}
-	
-	private String getNodeText(Node dato)
-    {
-        StringBuilder text = new StringBuilder();
-        NodeList childs = dato.getChildNodes();
- 
-        for (int k=0; k < childs.getLength(); k++)
-        {
-            text.append(childs.item(k).getNodeValue());
-        }
- 
-        return text.toString();
-    }
 }
