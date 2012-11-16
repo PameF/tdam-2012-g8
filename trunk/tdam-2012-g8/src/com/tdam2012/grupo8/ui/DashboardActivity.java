@@ -69,14 +69,14 @@ public class DashboardActivity extends Activity implements OnClickListener, OnMe
 	    		if(resultCode == RESULT_OK) {
 	    			
 	    			String phoneNumber = data.getExtras().getString(ListActivity.PHONE_RESULT);
-	    			long contactId = data.getExtras().getLong(ListActivity.CONTACT_ID);
-	    			String name = data.getExtras().getString(ListActivity.CONTACT_NAME);
+	    			//long contactId = data.getExtras().getLong(ListActivity.CONTACT_ID);
+	    			//String name = data.getExtras().getString(ListActivity.CONTACT_NAME);
 	    	        
 	    			
 	    			Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
 	    	        startActivity(callIntent);
 	    	        
-	    	       ActionRegistry reg = new ActionRegistry();
+	    	      /* ActionRegistry reg = new ActionRegistry();
 	    	       reg.setAction(ActionEnum.MISSED_CALL);
 	    	       reg.setContactId(contactId);
 	    	       reg.setContactName(name);
@@ -84,7 +84,7 @@ public class DashboardActivity extends Activity implements OnClickListener, OnMe
 	    	       reg.setDate(new Date());
 	    	       
 	    	       ActionsRegistryRepository rr = new ActionsRegistryRepository(this);
-	    	       rr.insertRegistration(reg);    	      
+	    	       rr.insertRegistration(reg);*/    	      
 	    		}
 	    		break;
     	}
