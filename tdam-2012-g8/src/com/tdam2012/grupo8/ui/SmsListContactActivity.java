@@ -22,6 +22,7 @@ public class SmsListContactActivity extends ListActivity implements OnClickListe
 {
 	public static final String PHONE_NUMBER_KEY = "PHONE_NUMBER";
 	public static final String CONTACT_ID_KEY = "CONTACT_ID";
+	public static final String MESSAGE_KEY = "MESSAGE";
 
 	private String phoneNumber;
 	private long contact;
@@ -80,21 +81,21 @@ public class SmsListContactActivity extends ListActivity implements OnClickListe
 			Intent sentIntent = new Intent(SmsSentReceiver.NAME);
 			sentIntent.putExtra(CONTACT_ID_KEY, contact);
 			sentIntent.putExtra(PHONE_NUMBER_KEY, phoneNumber);
+			sentIntent.putExtra(MESSAGE_KEY, message);
 			
-			PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, sentIntent, 0);
+			PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, sentIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 			
-			Intent deliveredIntent =  new Intent(SmsDeliveredReceiver.NAME);
+			/*Intent deliveredIntent =  new Intent(SmsDeliveredReceiver.NAME);
 			deliveredIntent.putExtra(CONTACT_ID_KEY, contact);
 			deliveredIntent.putExtra(PHONE_NUMBER_KEY, phoneNumber);
 			
-			PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, deliveredIntent, 0);
+			PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, deliveredIntent, 0);*/
 									
 			SmsManager sms = SmsManager.getDefault();
-			sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
+			sms.sendTextMessage(phoneNumber, null, message, sentPI, /*deliveredPI*/ null);
 			
 			adapter.addMessage(phoneNumber, message);
-			editText.setText("");
-			
+			editText.setText("");			
 		}
 	}
 }

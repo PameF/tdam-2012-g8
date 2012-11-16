@@ -147,11 +147,9 @@ public class ContactsRepository {
 	public Contact getContactByPhoneNumber(String phoneNumber) {
 		
 		Contact contact = null;
-		Uri uri;
-		Uri baseUri = ContactsContract.PhoneLookup.CONTENT_FILTER_URI;
-        
-	    uri = Uri.withAppendedPath(baseUri, Uri.encode("1555521" + phoneNumber)); 
-	    Cursor cursor = context.getContentResolver().query(uri, null, null, null, null); 
+		Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode("1555521" + phoneNumber)); 
+	    
+		Cursor cursor = context.getContentResolver().query(uri, null, null, null, null); 
 
 	    if (cursor.moveToFirst()) 
 	    { 
