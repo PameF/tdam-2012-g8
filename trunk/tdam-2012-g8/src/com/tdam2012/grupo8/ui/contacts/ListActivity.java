@@ -53,8 +53,13 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
         Object actionName = getIntent().getExtras().get(SELECT_ACTION_KEY);
         this.action = OnSelectActionEnum.valueOf(actionName.toString());
         
-        initListAdapter();
         initComponentEvents();
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+        initListAdapter();		
 	}
 	
 	public void initListAdapter() {

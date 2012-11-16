@@ -41,6 +41,5 @@ public class NewActivity extends Activity implements OnClickListener {
 			
 			new RegisterUserService().execute(this, name, pass);
 		}		
-	}
-	
+	}	
 }
