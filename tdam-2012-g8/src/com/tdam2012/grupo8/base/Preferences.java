@@ -8,4 +8,9 @@ public class Preferences {
 	public static final String PREFERENCE_USER_NAME 		= "PREFERENCE_USER_NAME";
 	public static final String PREFERENCE_USER_PASSWORD 	= "PREFERENCE_USER_PASSWORD";
 	
+	
+	public static final String PREFERENCE_SYNC 				= "PREFERENCE_SYNC";
+	
+	public static final String PREFERENCE_SYNC_LAST_TIME 	= "PREFERENCE_SYNC_LAST_TIME";
+	
 }

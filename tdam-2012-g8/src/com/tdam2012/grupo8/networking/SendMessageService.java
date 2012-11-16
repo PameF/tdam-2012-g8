@@ -6,10 +6,8 @@ import com.tdam2012.grupo8.base.Preferences;
 import com.tdam2012.grupo8.data.ActionsRegistryRepository;
 import com.tdam2012.grupo8.data.ActionsRegistryRepository.ActionEnum;
 import com.tdam2012.grupo8.entities.ActionRegistry;
-import com.tdam2012.grupo8.ui.DashboardActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;

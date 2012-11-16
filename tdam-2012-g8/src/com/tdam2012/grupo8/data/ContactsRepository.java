@@ -29,7 +29,12 @@ public class ContactsRepository {
 		Contact contact;
 		
 		ContentResolver resolver = this.context.getContentResolver();
-		Cursor cursor = resolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+		Cursor cursor = resolver.query(
+				ContactsContract.Contacts.CONTENT_URI, 
+				null, 
+				ContactsContract.Contacts.DISPLAY_NAME + " LIKE ?", 
+				new String[] { filter + "%" }, 
+				ContactsContract.Contacts.DISPLAY_NAME + (orderAsc ? " ASC" : " DESC"));
 		
 		if (cursor.getCount() > 0) {
 			
@@ -37,15 +42,12 @@ public class ContactsRepository {
 
 				String id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
 				String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-									
-				if (name != null && (name.toLowerCase().startsWith(filter))) {
 					
-					contact = new Contact();					
-					contact.setId(Long.parseLong(id));
-					contact.setName(name);
-
-					list.add(contact);
-				}
+				contact = new Contact();					
+				contact.setId(Long.parseLong(id));
+				contact.setName(name);
+	
+				list.add(contact);
 			}
 		}
 		cursor.close();
@@ -116,5 +118,29 @@ public class ContactsRepository {
 	    }
 	    
 	    return photo;
+	}
+	
+	public Contact getContactByPhoneNumber(String phoneNumber) {
+		
+		Contact contact = null;
+		Uri uri;
+		Uri baseUri = ContactsContract.PhoneLookup.CONTENT_FILTER_URI;
+        
+	    uri = Uri.withAppendedPath(baseUri, Uri.encode(phoneNumber)); 
+	    Cursor cursor = context.getContentResolver().query(uri, null, null, null, null); 
+
+	    if (cursor.moveToFirst()) 
+	    { 
+	    	String id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+			String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+				
+			contact = new Contact();					
+			contact.setId(Long.parseLong(id));
+			contact.setName(name);
+	    } 
+
+	    cursor.close();
+
+	    return contact; 
 	}
 }
