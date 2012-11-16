@@ -1,5 +1,14 @@
 package com.tdam2012.grupo8.receivers;
 
+import java.util.Date;
+
+import com.tdam2012.grupo8.data.ActionsRegistryRepository;
+import com.tdam2012.grupo8.data.ActionsRegistryRepository.ActionEnum;
+import com.tdam2012.grupo8.data.ContactsRepository;
+import com.tdam2012.grupo8.entities.ActionRegistry;
+import com.tdam2012.grupo8.entities.Contact;
+import com.tdam2012.grupo8.ui.SmsListContactActivity;
+
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -19,9 +28,24 @@ public class SmsSentReceiver extends BroadcastReceiver {
 		switch (getResultCode())
 		{
 			case Activity.RESULT_OK:
-				message = "SMS sent";
 				
-				// TODO PAME Agregar registro
+				String phoneNumber = intent.getExtras().getString(SmsListContactActivity.PHONE_NUMBER_KEY);
+		        long contactId = intent.getExtras().getLong(SmsListContactActivity.CONTACT_ID_KEY);
+				
+		        ContactsRepository contactRep = new ContactsRepository(context);
+		        Contact contact = contactRep.getContactById(contactId);
+		        
+				ActionRegistry reg = new ActionRegistry();
+	 	       	reg.setAction(ActionEnum.SENT_MESSAGE);
+	 	       	reg.setContactId(contactId);
+	 	       	reg.setContactName(contact.getName());
+	 	       	reg.setContactPhoneNumber(phoneNumber);
+	 	       	reg.setMessage(message);
+	 	       	reg.setDate(new Date());
+	 	       
+	 	       	ActionsRegistryRepository repository = new ActionsRegistryRepository(context);
+	 	       	repository.insertRegistration(reg);
+	 	       	
 				break;
 		
 			case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
@@ -43,8 +67,5 @@ public class SmsSentReceiver extends BroadcastReceiver {
 		
 		if(message != null)
 			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-		
-		//TODO Actualizar fecha y hora de envío en el mensaje		
 	}
-
 }

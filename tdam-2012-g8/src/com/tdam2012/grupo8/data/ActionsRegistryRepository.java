@@ -51,4 +51,6 @@ public class ActionsRegistryRepository {
 		SQLiteDatabase db = helper.getWritableDatabase();
 		db.insert(DATABASE, null, cv);
 	}
+	
+	
 }
