@@ -1,6 +1,11 @@
 package com.tdam2012.grupo8.ui;
 
+import java.util.Date;
+
 import com.tdam2012.grupo8.R;
+import com.tdam2012.grupo8.data.RegistrationRepository;
+import com.tdam2012.grupo8.data.RegistrationRepository.ActionEnum;
+import com.tdam2012.grupo8.entities.Registration;
 import com.tdam2012.grupo8.ui.contacts.ListActivity;
 
 import android.net.Uri;
@@ -63,10 +68,23 @@ public class DashboardActivity extends Activity implements OnClickListener, OnMe
 	    		
 	    		if(resultCode == RESULT_OK) {
 	    			
-	    			String phoneNumber = "tel:" + data.getExtras().getString(ListActivity.PHONE_RESULT);
-	    	        Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(phoneNumber));
+	    			String phoneNumber = data.getExtras().getString(ListActivity.PHONE_RESULT);
+	    			long contactId = data.getExtras().getLong(ListActivity.CONTACT_ID);
+	    			String name = data.getExtras().getString(ListActivity.CONTACT_NAME);
 	    	        
+	    			
+	    			Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
 	    	        startActivity(callIntent);
+	    	        
+	    	       Registration reg = new Registration();
+	    	       reg.setAction(ActionEnum.MISSED_CALL);
+	    	       reg.setId_contact(contactId);
+	    	       reg.setName_contact(name);
+	    	       reg.setNumber_phone_contact(phoneNumber);
+	    	       reg.setDate(new Date());
+	    	       
+	    	       RegistrationRepository rr = new RegistrationRepository(this);
+	    	       rr.insertRegistration(reg);    	      
 	    		}
 	    		break;
     	}
