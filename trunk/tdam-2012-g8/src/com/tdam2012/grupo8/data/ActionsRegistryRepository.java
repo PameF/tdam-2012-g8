@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.tdam2012.grupo8.entities.ActionRegistry;
+import com.tdam2012.grupo8.entities.SmsMessage;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -59,19 +60,76 @@ public class ActionsRegistryRepository {
 	
 	public ArrayList<ActionRegistry> getSmsContactConversations() {
 		
-		ArrayList<ActionRegistry> conversations = new ArrayList<ActionRegistry>();
-		
-		String sql = "SELECT * FROM " + DATABASE + " WHERE " + COLUMN_ACTION + " IN ('SENT_MESSAGE', 'RECEIVED_MESSAGE') GROUP BY " + COLUMN_CONTACT_ID;
+		String sql = "SELECT * FROM " + DATABASE + " WHERE " + COLUMN_ACTION + " IN (?, ?) GROUP BY " + COLUMN_CONTACT_ID;
 		String[] params = new String [] { ActionEnum.SENT_MESSAGE.toString(), ActionEnum.RECEIVED_MESSAGE.toString() };
+	
+		SQLiteDatabase db = helper.getReadableDatabase();
+		Cursor cursor = db.rawQuery(sql, params);
+		
+		ArrayList<ActionRegistry> conversations = createActionRegistry(cursor);
+		
+		cursor.close();
+		db.close();
+		
+		return conversations;	
+	}
+	
+	public ArrayList<SmsMessage> getSmsContactConversation(long contact_id) {
+				
+		String sql = "SELECT * FROM " + DATABASE + " WHERE " + COLUMN_ACTION + " IN (?, ?) AND " + COLUMN_CONTACT_ID + "=?";
+		String[] params = new String [] { ActionEnum.SENT_MESSAGE.toString(), ActionEnum.RECEIVED_MESSAGE.toString(), String.valueOf(contact_id) };
 		
 		SQLiteDatabase db = helper.getReadableDatabase();
-		Cursor cursor = db.rawQuery(sql, null);
+		Cursor cursor = db.rawQuery(sql, params);
+		
+		ArrayList<SmsMessage> messages = new ArrayList<SmsMessage>();		
+		SimpleDateFormat dateFormatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzzzzzzz yyyy");
+		
+		SmsMessage sms;
+		Date date;
+		ActionEnum action;
+		
+		if (cursor.getCount() > 0) {			
+			while (cursor.moveToNext()) {
+
+				try {
+					date = dateFormatter.parse(cursor.getString(cursor.getColumnIndex(COLUMN_DATE)));
+					action = ActionEnum.valueOf(cursor.getString(cursor.getColumnIndex(COLUMN_ACTION)));
+					
+					sms = new SmsMessage();
+					
+					sms.setContact(cursor.getLong(cursor.getColumnIndex(COLUMN_CONTACT_ID)));
+					sms.setPhoneNumber(cursor.getString(cursor.getColumnIndex(COLUMN_CONTACT_PHONE_NUMBER)));
+					sms.setMessage(cursor.getString(cursor.getColumnIndex(COLUMN_MESSAGE)));
+					
+					switch(action) {
+						case RECEIVED_MESSAGE:
+							sms.setReceivedDate(date);
+						case SENT_MESSAGE:
+							sms.setSentDate(date);
+					}
+					
+					messages.add(sms);
+					
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}			
+			}
+		}
+		
+		cursor.close();
+		db.close();
+		
+		return messages;		
+	}
+	
+	private ArrayList<ActionRegistry> createActionRegistry(Cursor cursor) {
+		ArrayList<ActionRegistry> list = new ArrayList<ActionRegistry>();
 		
 		ActionRegistry registry;		
 		SimpleDateFormat dateFormatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzzzzzzz yyyy");
-		
-		if (cursor.getCount() > 0) {
-			
+				
+		if (cursor.getCount() > 0) {			
 			while (cursor.moveToNext()) {
 
 				try {
@@ -79,20 +137,19 @@ public class ActionsRegistryRepository {
 					
 					registry.setContactId(cursor.getLong(cursor.getColumnIndex(COLUMN_CONTACT_ID)));
 					registry.setContactName(cursor.getString(cursor.getColumnIndex(COLUMN_CONTACT_NAME)));
+					registry.setContactPhoneNumber(cursor.getString(cursor.getColumnIndex(COLUMN_CONTACT_PHONE_NUMBER)));
 					registry.setMessage(cursor.getString(cursor.getColumnIndex(COLUMN_MESSAGE)));
 					registry.setDate(dateFormatter.parse(cursor.getString(cursor.getColumnIndex(COLUMN_DATE))));
+					registry.setAction(ActionEnum.valueOf(cursor.getString(cursor.getColumnIndex(COLUMN_ACTION))));
 					
-					conversations.add(registry);
+					list.add(registry);
 					
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}			
 			}
 		}
-		cursor.close();
-		db.close();
 		
-		return conversations;
-		
+		return list;
 	}
 }
