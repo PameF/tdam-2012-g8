@@ -24,6 +24,8 @@ public class SmsListActivity extends android.app.ListActivity implements OnClick
 {
 	private static final int CONTACT_PHONE_NUMBER_REQUEST = 1;
 	
+	private SmsListAdapter adapter;
+	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms_list);
@@ -43,8 +45,7 @@ public class SmsListActivity extends android.app.ListActivity implements OnClick
 		ActionsRegistryRepository repository = new ActionsRegistryRepository(this);	
 		ArrayList<ActionRegistry> conversations = repository.getSmsContactConversations();
 		
-		SmsListAdapter adapter = new SmsListAdapter(this, conversations);
-		
+		adapter = new SmsListAdapter(this, conversations);		
 		getListView().setAdapter(adapter);
 	}
 	
@@ -57,8 +58,7 @@ public class SmsListActivity extends android.app.ListActivity implements OnClick
 				Intent i = new Intent(SmsListActivity.this, ListActivity.class);
 				i.putExtra(ListActivity.SELECT_ACTION_KEY, ListActivity.OnSelectActionEnum.PHONE_SELECT);
 		
-				startActivityForResult(i, CONTACT_PHONE_NUMBER_REQUEST);
-				
+				startActivityForResult(i, CONTACT_PHONE_NUMBER_REQUEST);				
 				break;
 		}
 	}
@@ -69,20 +69,28 @@ public class SmsListActivity extends android.app.ListActivity implements OnClick
 		if(resultCode == RESULT_OK && requestCode == CONTACT_PHONE_NUMBER_REQUEST) 
 		{		
 			String phoneNumber = data.getExtras().getString(ListActivity.PHONE_RESULT);
+			String name = data.getExtras().getString(ListActivity.CONTACT_NAME);
 			long contact = data.getExtras().getLong(ListActivity.CONTACT_ID);
 			
-			Intent intent = new Intent(SmsListActivity.this, SmsListContactActivity.class);
-			intent.putExtra(SmsListContactActivity.PHONE_NUMBER_KEY, phoneNumber);
-			intent.putExtra(SmsListContactActivity.CONTACT_ID_KEY, contact);
-			
-			startActivity(intent);
+			openContactConversation(name, phoneNumber, contact);
 		}
 	}
 	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		
+		ActionRegistry registry = (ActionRegistry)adapter.getItem(position);		
+		openContactConversation(registry.getContactName(), registry.getContactPhoneNumber(), registry.getContactId());
+	}
+	
+	private void openContactConversation (String name, String phoneNumber, long id) {
+		Intent intent = new Intent(SmsListActivity.this, SmsListContactActivity.class);
 		
+		intent.putExtra(SmsListContactActivity.PHONE_NUMBER_KEY, phoneNumber);
+		intent.putExtra(SmsListContactActivity.CONTACT_ID_KEY, id);
+		intent.putExtra(SmsListContactActivity.CONTACT_NAME_KEY, name);
+		
+		startActivity(intent);
 	}
 	
 	class SmsListAdapter extends BaseAdapter {

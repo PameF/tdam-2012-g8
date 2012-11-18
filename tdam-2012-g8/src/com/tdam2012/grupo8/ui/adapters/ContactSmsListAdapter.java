@@ -58,6 +58,11 @@ public class ContactSmsListAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 	
+	public void setData(ArrayList<SmsMessage> messages) {
+		this.messages = messages;
+		notifyDataSetChanged();
+	}
+	
 	class Holder {
 		public TextView textMessage;
 		public TextView textDate;
