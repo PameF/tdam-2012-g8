@@ -36,14 +36,17 @@
         android:id="@+id/LinearLayout1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@id/general_pnl_send_message" >
-
+        android:layout_above="@id/general_pnl_send_message" >
+
         <ListView
             android:id="@android:id/list"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="@drawable/shape_gradient_gris" >
+            android:background="@drawable/shape_gradient_gris"
+            android:dividerHeight="0dp"
+            android:stackFromBottom="true"
+            android:transcriptMode="alwaysScroll" >
 
         </ListView>
 

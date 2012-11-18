@@ -32,25 +32,23 @@
             android:text="@string/title_send" />
 			
     </LinearLayout>
+    
+    <LinearLayout
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent"
+         android:background="@drawable/shape_gradient_gris"
+         android:orientation="vertical" >
+
+			<ListView
+			    android:id="@android:id/list"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:background="@drawable/shape_gradient_gris"
+			    android:dividerHeight="0dp"
+			    android:stackFromBottom="true"
+			    android:transcriptMode="alwaysScroll" />
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:fillViewport="true"
-		android:layout_above="@id/general_pnl_send_message" >
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="@drawable/shape_gradient_gris"
-            android:orientation="vertical" >
-
-			<include layout="@layout/listitem_dialog_green" />
-            <include layout="@layout/listitem_dialog_pink" />
-            <include layout="@layout/listitem_dialog_green" />
-
-        </LinearLayout>
-
-    </ScrollView>
+     </LinearLayout>
 
 </RelativeLayout>
