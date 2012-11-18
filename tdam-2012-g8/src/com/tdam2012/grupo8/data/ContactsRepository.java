@@ -152,7 +152,7 @@ public class ContactsRepository {
 		
 		Cursor cursor = this.context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
 		
-	    while (cursor.moveToFirst()) 
+	    while (cursor.moveToNext()) 
 	    { 
 	    	number = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
 	    	contactId = cursor.getLong(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID));

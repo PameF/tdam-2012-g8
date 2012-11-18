@@ -27,7 +27,7 @@ public class MessageSenderService {
 		try {
 			
 			HttpClient client = new DefaultHttpClient();
-			String serverUrl = "http://10.0.2.2:8080/MessageSender/";
+			String serverUrl = "http://192.168.1.5:8080/MessageSender/";
 		
 			StringEntity se = new StringEntity(xml, HTTP.UTF_8);
 		    se.setContentType("text/xml");
