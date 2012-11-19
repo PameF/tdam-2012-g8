@@ -15,11 +15,10 @@
         android:textSize="@dimen/padding_large"
         android:textStyle="bold" />
 
-		<include
-		    android:id="@+id/email_list_item1"
-		    layout="@layout/listitem_email" />
-
-		<include layout="@layout/listitem_email" />
-		<include layout="@layout/listitem_email" />
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
 		
 </LinearLayout>

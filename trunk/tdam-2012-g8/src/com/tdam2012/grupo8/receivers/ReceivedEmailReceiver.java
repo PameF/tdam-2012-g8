@@ -7,6 +7,8 @@ import com.tdam2012.grupo8.data.ContactsRepository;
 import com.tdam2012.grupo8.data.ActionsRegistryRepository.ActionEnum;
 import com.tdam2012.grupo8.entities.ActionRegistry;
 import com.tdam2012.grupo8.entities.Contact;
+import com.tdam2012.grupo8.ui.adapters.ContactEmailListAdapter;
+import com.tdam2012.grupo8.ui.adapters.ContactSmsListAdapter;
 import com.tdam2012.grupo8.ui.contacts.ListActivity;
 
 import android.content.BroadcastReceiver;
@@ -16,6 +18,15 @@ import android.content.Intent;
 public class ReceivedEmailReceiver extends BroadcastReceiver {
 
 	public static final String NAME = "android.provider.Telephony.RECEIVED_EMAIL";
+	
+	private ContactEmailListAdapter adapter;
+	private String email_address;
+	
+	public ReceivedEmailReceiver(String email_address, ContactEmailListAdapter adapter) {
+		this.adapter = adapter;
+		this.email_address = email_address;
+	}
+	
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		

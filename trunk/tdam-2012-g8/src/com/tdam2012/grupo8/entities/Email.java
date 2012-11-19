@@ -1,12 +1,38 @@
 package com.tdam2012.grupo8.entities;
 
+import java.util.Date;
+
 import android.R.string;
+
 
 public class Email {
 	
 	private long id;
 	private long contact;
-	private string email;
+	private String emailAddress;
+	private String subject;
+	private String contentEmail;
+	private Date sentDate;
+	private Date receivedDate;
+	
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+	public Date getSentDate() {
+		return sentDate;
+	}
+	public void setSentDate(Date sentDate) {
+		this.sentDate = sentDate;
+	}
+	public Date getReceivedDate() {
+		return receivedDate;
+	}
+	public void setReceivedDate(Date receivedDate) {
+		this.receivedDate = receivedDate;
+	}
 	public long getId() {
 		return id;
 	}
@@ -19,25 +45,17 @@ public class Email {
 	public void setContact(long contact) {
 		this.contact = contact;
 	}
-	public string getEmail() {
-		return email;
-	}
-	public void setEmail(string email) {
-		this.email = email;
-	}
-	public string getSubject() {
+	public String getSubject() {
 		return subject;
 	}
-	public void setSubject(string subject) {
+	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	public string getContent_email() {
-		return content_email;
+	public String getContentEmail() {
+		return contentEmail;
 	}
-	public void setContent_email(string content_email) {
-		this.content_email = content_email;
+	public void setContentEmail(String contentEmail) {
+		this.contentEmail = contentEmail;
 	}
-	private string subject;
-	private string content_email;
-
+	
 }
