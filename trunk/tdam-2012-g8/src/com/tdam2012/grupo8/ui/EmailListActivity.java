@@ -68,11 +68,11 @@ public class EmailListActivity extends android.app.ListActivity implements OnCli
 	}
 	
 	private void openContactConversation (String name, String emailAddress, long id) {
-		Intent intent = new Intent(EmailListActivity.this, EmailListContactActivity.class);
+		Intent intent = new Intent(EmailListActivity.this, EmailConversationActivity.class);
 		
-		intent.putExtra(EmailListContactActivity.EMAIL_ADDRESS_KEY, emailAddress);
-		intent.putExtra(EmailListContactActivity.CONTACT_ID_KEY, id);
-		intent.putExtra(EmailListContactActivity.CONTACT_NAME_KEY, name);
+		intent.putExtra(EmailConversationActivity.EMAIL_ADDRESS_KEY, emailAddress);
+		intent.putExtra(EmailConversationActivity.CONTACT_ID_KEY, id);
+		intent.putExtra(EmailConversationActivity.CONTACT_NAME_KEY, name);
 		
 		startActivity(intent);
 	}

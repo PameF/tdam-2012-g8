@@ -84,11 +84,11 @@ public class SmsListActivity extends android.app.ListActivity implements OnClick
 	}
 	
 	private void openContactConversation (String name, String phoneNumber, long id) {
-		Intent intent = new Intent(SmsListActivity.this, SmsListContactActivity.class);
+		Intent intent = new Intent(SmsListActivity.this, SmsConversationActivity.class);
 		
-		intent.putExtra(SmsListContactActivity.PHONE_NUMBER_KEY, phoneNumber);
-		intent.putExtra(SmsListContactActivity.CONTACT_ID_KEY, id);
-		intent.putExtra(SmsListContactActivity.CONTACT_NAME_KEY, name);
+		intent.putExtra(SmsConversationActivity.PHONE_NUMBER_KEY, phoneNumber);
+		intent.putExtra(SmsConversationActivity.CONTACT_ID_KEY, id);
+		intent.putExtra(SmsConversationActivity.CONTACT_NAME_KEY, name);
 		
 		startActivity(intent);
 	}

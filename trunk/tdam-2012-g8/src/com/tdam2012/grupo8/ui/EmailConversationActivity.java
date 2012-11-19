@@ -23,7 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class EmailListContactActivity extends ListActivity implements OnClickListener {
+public class EmailConversationActivity extends ListActivity implements OnClickListener {
 
 	public static final String EMAIL_ADDRESS_KEY = "CONTACT_EMAIL_ADDRESS";
 	public static final String CONTACT_ID_KEY = "CONTACT_ID";
@@ -44,7 +44,7 @@ public class EmailListContactActivity extends ListActivity implements OnClickLis
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_email_list_contact);
+        setContentView(R.layout.activity_email_conversation);
         
         inicializeContactInfo();
                 

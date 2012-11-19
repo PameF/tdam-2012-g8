@@ -26,7 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SmsListContactActivity extends ListActivity implements OnClickListener
+public class SmsConversationActivity extends ListActivity implements OnClickListener
 {
 	public static final String PHONE_NUMBER_KEY = "PHONE_NUMBER";
 	public static final String CONTACT_ID_KEY = "CONTACT_ID";
@@ -45,7 +45,7 @@ public class SmsListContactActivity extends ListActivity implements OnClickListe
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sms_list_contact);
+        setContentView(R.layout.activity_sms_list_conversation);
         
         inicializeContactInfo();
                 

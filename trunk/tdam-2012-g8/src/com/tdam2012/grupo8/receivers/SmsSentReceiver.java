@@ -7,7 +7,7 @@ import com.tdam2012.grupo8.data.ActionsRegistryRepository.ActionEnum;
 import com.tdam2012.grupo8.data.ContactsRepository;
 import com.tdam2012.grupo8.entities.ActionRegistry;
 import com.tdam2012.grupo8.entities.Contact;
-import com.tdam2012.grupo8.ui.SmsListContactActivity;
+import com.tdam2012.grupo8.ui.SmsConversationActivity;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -29,9 +29,9 @@ public class SmsSentReceiver extends BroadcastReceiver {
 		{
 			case Activity.RESULT_OK:
 				
-				String phoneNumber = intent.getExtras().getString(SmsListContactActivity.PHONE_NUMBER_KEY);
-		        long contactId = intent.getExtras().getLong(SmsListContactActivity.CONTACT_ID_KEY);
-		        String messageBody = intent.getExtras().getString(SmsListContactActivity.MESSAGE_KEY);
+				String phoneNumber = intent.getExtras().getString(SmsConversationActivity.PHONE_NUMBER_KEY);
+		        long contactId = intent.getExtras().getLong(SmsConversationActivity.CONTACT_ID_KEY);
+		        String messageBody = intent.getExtras().getString(SmsConversationActivity.MESSAGE_KEY);
 				
 		        ContactsRepository contactRep = new ContactsRepository(context);
 		        Contact contact = contactRep.getContactById(contactId);
