@@ -46,6 +46,8 @@
 
         <activity android:name=".ui.EmailListActivity" ></activity>
         <activity android:name=".ui.EmailNewActivity" ></activity>
+        <activity android:name=".ui.EmailConversationActivity" ></activity>
+        
         
         <activity android:name=".ui.contacts.ListActivity" ></activity>
         <activity android:name=".ui.contacts.NewActivity" ></activity>
@@ -63,13 +65,25 @@
         	</intent-filter>    
     	</receiver>
        	
+       	<receiver android:name=".receivers.SentEmailReceiver">
+    		<intent-filter>
+        		<action android:name="android.provider.Telephony.SENT_EMAIL" />
+        	</intent-filter>    
+    	</receiver>
+    	
+       	<receiver android:name=".receivers.ReceivedEmailReceiver">
+    		<intent-filter>
+        		<action android:name="android.provider.Telephony.SENT_EMAIL" />
+        	</intent-filter>    
+    	</receiver>
     	<!--
     	<receiver android:name=".receivers.IncomingCallReceiver">
     		<intent-filter>
         		<action android:name="android.intent.action.PHONE_STATE" />
         	</intent-filter>    
     	</receiver>
-    	
+   	
+    	 	
     	<receiver android:name=".receivers.OutgoingCallReceiver">
     		<intent-filter>
         		<action android:name="com.tdam2012.grupo8.receiver.OUTGOING_CALL" />

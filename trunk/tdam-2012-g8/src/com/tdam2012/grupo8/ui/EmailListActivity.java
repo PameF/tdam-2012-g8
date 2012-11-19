@@ -31,20 +31,14 @@ public class EmailListActivity extends android.app.ListActivity implements OnCli
 {
 	private EmailListAdapter adapter;
 	
-	//private static final int CONTACT_PHONE_NUMBER_REQUEST = 1;
+	private static final int CONTACT_PHONE_NUMBER_REQUEST = 1;
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_list);
         
         Button btn = (Button)findViewById(R.id.button1);
-        btn.setOnClickListener(new OnClickListener(){
-    		public void onClick(View v)
-        	{
-        		Intent i = new Intent(EmailListActivity.this,  EmailNewActivity.class);
-        		startActivity(i);
-        	}
-    	}); 
+        btn.setOnClickListener(this);
     }
 	
 	protected void onResume() {
@@ -61,6 +55,33 @@ public class EmailListActivity extends android.app.ListActivity implements OnCli
 		getListView().setAdapter(adapter);
 	}
 	
+	public void onClick(View v) {
+		
+		switch(v.getId()) {
+		
+		case R.id.button1:
+		{	
+		Intent i = new Intent(EmailListActivity.this, ListActivity.class);
+		i.putExtra(ListActivity.SELECT_ACTION_KEY, ListActivity.OnSelectActionEnum.EMAIL_SELECT);
+		
+		startActivityForResult(i, CONTACT_PHONE_NUMBER_REQUEST);
+		break;
+		}
+		}
+	}
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) 
+	{	
+		if(resultCode == RESULT_OK && requestCode == CONTACT_PHONE_NUMBER_REQUEST) 
+		{		
+			String email_address = data.getExtras().getString(ListActivity.EMAIL_RESULT);
+			String name = data.getExtras().getString(ListActivity.CONTACT_NAME);
+			long contact = data.getExtras().getLong(ListActivity.CONTACT_ID);
+			
+			openContactConversation(name, email_address, contact);
+		}
+	}
+	
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		
 		ActionRegistry registry = (ActionRegistry)adapter.getItem(position);		
@@ -68,31 +89,17 @@ public class EmailListActivity extends android.app.ListActivity implements OnCli
 	}
 	
 	private void openContactConversation (String name, String emailAddress, long id) {
-		Intent intent = new Intent(EmailListActivity.this, EmailConversationActivity.class);
-		
-		intent.putExtra(EmailConversationActivity.EMAIL_ADDRESS_KEY, emailAddress);
-		intent.putExtra(EmailConversationActivity.CONTACT_ID_KEY, id);
-		intent.putExtra(EmailConversationActivity.CONTACT_NAME_KEY, name);
-		
+		Intent intent = new Intent(EmailListActivity.this, EmailNewActivity.class);
 		startActivity(intent);
 	}
 
-	public void onClick(View v) {
-			
-		Intent i = new Intent(EmailListActivity.this, ListActivity.class);
-		i.putExtra(ListActivity.SELECT_ACTION_KEY, ListActivity.OnSelectActionEnum.EMAIL_SELECT);
-
-		startActivity(i);
-		
-	}
-	
 	class EmailListAdapter extends BaseAdapter {
 
 		private ArrayList<ActionRegistry> emails;
 		private LayoutInflater inflater;
 		
-		public EmailListAdapter(Context context, ArrayList<ActionRegistry> conversations) {
-			this.emails = conversations;
+		public EmailListAdapter(Context context, ArrayList<ActionRegistry> emails) {
+			this.emails = emails;
 			this.inflater = LayoutInflater.from(context);
 		}
 		

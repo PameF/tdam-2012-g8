@@ -13,12 +13,10 @@ public class EmailNewActivity extends Activity
         setContentView(R.layout.activity_email_new);
         
         String listContact[] = {"pamef.2707@gmail.com"};
-        String listContact2[] = {"pame_f27@hotmail.com"};
         
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("plain/text");
         intent.putExtra(Intent.EXTRA_EMAIL, listContact);
-        intent.putExtra(Intent.EXTRA_CC, listContact2);
         intent.putExtra(Intent.EXTRA_SUBJECT,"");
         intent.putExtra(Intent.EXTRA_TEXT,"");
         startActivity(Intent.createChooser(intent, "Email"));

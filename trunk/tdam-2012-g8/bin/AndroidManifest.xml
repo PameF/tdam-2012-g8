@@ -15,6 +15,8 @@
   	<uses-permission android:name="android.permission.RECEIVE_SMS" />
   	<uses-permission android:name="android.permission.READ_SMS" />
   	<uses-permission android:name="android.permission.INTERNET" />
+  	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -35,15 +37,17 @@
         <activity android:name=".ui.CallActivity" ></activity>
         
         <activity android:name=".ui.SmsListActivity" ></activity>
-		<activity android:name=".ui.SmsListContactActivity" ></activity>
+		<activity android:name=".ui.SmsConversationActivity" ></activity>
         <activity android:name=".ui.SmsNewActivity" ></activity>
         
        	<activity android:name=".ui.SmsWebListActivity" ></activity>
        	<activity android:name=".ui.SmsWebNewActivity" ></activity> 
-       	<activity android:name=".ui.SmsWebListContactActivity" ></activity> 
+       	<activity android:name=".ui.SmsWebConversationActivity" ></activity> 
 
         <activity android:name=".ui.EmailListActivity" ></activity>
         <activity android:name=".ui.EmailNewActivity" ></activity>
+        <activity android:name=".ui.EmailConversationActivity" ></activity>
+        
         
         <activity android:name=".ui.contacts.ListActivity" ></activity>
         <activity android:name=".ui.contacts.NewActivity" ></activity>
@@ -55,13 +59,31 @@
        	<activity android:name=".ui.HistorySmsWebActivity" ></activity>
        	<activity android:name=".ui.TabHostActivity" ></activity>
        	
-       	<receiver android:name=".receivers.IncomingCallReceiver">
+       	<receiver android:name=".receivers.ConnectivityStatusReceiver">
+    		<intent-filter>
+        		<action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+        	</intent-filter>    
+    	</receiver>
+       	
+       	<receiver android:name=".receivers.SentEmailReceiver">
+    		<intent-filter>
+        		<action android:name="android.provider.Telephony.SENT_EMAIL" />
+        	</intent-filter>    
+    	</receiver>
+    	
+       	<receiver android:name=".receivers.ReceivedEmailReceiver">
+    		<intent-filter>
+        		<action android:name="android.provider.Telephony.SENT_EMAIL" />
+        	</intent-filter>    
+    	</receiver>
+    	<!--
+    	<receiver android:name=".receivers.IncomingCallReceiver">
     		<intent-filter>
         		<action android:name="android.intent.action.PHONE_STATE" />
         	</intent-filter>    
     	</receiver>
-    	
-    	<!--
+   	
+    	 	
     	<receiver android:name=".receivers.OutgoingCallReceiver">
     		<intent-filter>
         		<action android:name="com.tdam2012.grupo8.receiver.OUTGOING_CALL" />

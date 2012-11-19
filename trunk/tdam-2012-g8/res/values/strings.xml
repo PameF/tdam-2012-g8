@@ -24,6 +24,7 @@
 	<string name="user_login_login">Ingresar</string>
 	<string name="user_login_register">Registrarme</string>
 	<string name="sms_list_contact_message">Mensaje</string>
+	<string name="email_list_contact_message">Email</string>
 	<string name="user_new_password_confirm">Confirmar clave</string>
 	<string name="contact_edit_username">Ingrese el nombre de usuario</string>
 	<string name="button_done">Aceptar</string>
