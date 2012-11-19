@@ -7,10 +7,12 @@ import com.tdam2012.grupo8.data.ActionsRegistryRepository;
 import com.tdam2012.grupo8.data.ActionsRegistryRepository.ActionEnum;
 import com.tdam2012.grupo8.entities.ActionRegistry;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 public class SendMessageService  extends AsyncTask<Object, Void, String> {
 
@@ -25,19 +27,23 @@ public class SendMessageService  extends AsyncTask<Object, Void, String> {
 	@Override
 	protected String doInBackground(Object... params) {
 		
-		context = (Context)params[0]; 
-		contactUsername = (String)params[1];
-		contactName = (String)params[2];
-		contactId = String.valueOf(params[3]);
-		message = (String)params[4];
+		String response = null;
 		
-		SharedPreferences preferences = context.getSharedPreferences(Preferences.PREFERENCE_USER, context.MODE_PRIVATE);
-		
-		username = preferences.getString(Preferences.PREFERENCE_USER_NAME, "");
-		password = preferences.getString(Preferences.PREFERENCE_USER_PASSWORD, "");
-		
-		String xml = generateXmlSendMessage();
-		String response = MessageSenderService.post(xml);
+		if(isOnline()) {		
+			context = (Context)params[0]; 
+			contactUsername = (String)params[1];
+			contactName = (String)params[2];
+			contactId = String.valueOf(params[3]);
+			message = (String)params[4];
+			
+			SharedPreferences preferences = context.getSharedPreferences(Preferences.PREFERENCE_USER, context.MODE_PRIVATE);
+			
+			username = preferences.getString(Preferences.PREFERENCE_USER_NAME, "");
+			password = preferences.getString(Preferences.PREFERENCE_USER_PASSWORD, "");
+			
+			String xml = generateXmlSendMessage();
+			response = MessageSenderService.post(xml);
+		}
 		
 		return response;
 	}
@@ -45,7 +51,12 @@ public class SendMessageService  extends AsyncTask<Object, Void, String> {
 	@Override
 	protected void onPostExecute(String result) {
 		
-		String error = MessageSenderService.processRequest(result);	
+		String error = null;
+		
+		if(result == null) 
+			error = "No ha conexión a internet";
+		else 
+			error = MessageSenderService.processRequest(result);	
 		
 		if(error == null) {
 			
@@ -61,7 +72,13 @@ public class SendMessageService  extends AsyncTask<Object, Void, String> {
  	       repository.insertRegistration(reg);   
 		}
 		else {
-			Toast.makeText(context, error, Toast.LENGTH_LONG).show();
+			AlertDialog builder = new AlertDialog.Builder(context)
+	        	.setTitle("Servicio Web")
+	        	.setMessage(error)
+	        	.setPositiveButton("OK",null)
+	        	.create();
+			
+			builder.show(); 
 		}
 	}
 	
@@ -75,5 +92,16 @@ public class SendMessageService  extends AsyncTask<Object, Void, String> {
 					"</action>";
 		
 		return xml;
+	}
+	
+	private boolean isOnline() {
+	    ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo netInfo = cm.getActiveNetworkInfo();
+	    
+	    if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+	        return true;
+	    }
+	    
+	    return false;
 	}
 }
