@@ -18,6 +18,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 public class MessageSenderService {
 		
 	protected static String post(String xml) {
@@ -76,5 +80,13 @@ public class MessageSenderService {
 		}
 		
 		return message;
+	}
+	
+	public static boolean checkConnectivity(Context context) {
+		
+		ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+		
+		return activeNetwork.isConnectedOrConnecting();
 	}
 }

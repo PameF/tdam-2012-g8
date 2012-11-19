@@ -56,13 +56,19 @@
        	<activity android:name=".ui.HistorySmsWebActivity" ></activity>
        	<activity android:name=".ui.TabHostActivity" ></activity>
        	
-       	<receiver android:name=".receivers.IncomingCallReceiver">
+       	<receiver android:name=".receivers.ConnectivityStatusReceiver">
+    		<intent-filter>
+        		<action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+        	</intent-filter>    
+    	</receiver>
+       	
+    	<!--
+    	<receiver android:name=".receivers.IncomingCallReceiver">
     		<intent-filter>
         		<action android:name="android.intent.action.PHONE_STATE" />
         	</intent-filter>    
     	</receiver>
     	
-    	<!--
     	<receiver android:name=".receivers.OutgoingCallReceiver">
     		<intent-filter>
         		<action android:name="com.tdam2012.grupo8.receiver.OUTGOING_CALL" />

@@ -11,12 +11,16 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Looper;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +30,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ListActivity extends android.app.ListActivity implements OnClickListener
+public class ListActivity extends android.app.ListActivity implements OnClickListener, OnItemLongClickListener
 {
 	// Parámetro que indica que tipo de comportamiento debe tener al seleccionar un contacto
 	public static final String SELECT_ACTION_KEY = "SELECT_ACTION";
@@ -58,20 +62,25 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
         this.action = OnSelectActionEnum.valueOf(actionName.toString());
         
         initComponentEvents();
+
+		this.repository = new ContactsRepository(this); 
+		this.adapter = new ListAdapter();
+        setListAdapter(adapter);
+        
+        getListView().setOnItemLongClickListener(this);
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-        initListAdapter();		
+		refreshList();
 	}
 	
-	public void initListAdapter() {
-		this.repository = new ContactsRepository(this);
-		this.adapter = new ListAdapter();
-        
-        setListAdapter(adapter);		
-        adapter.setData(this.repository.getContactList("", true));
+	private void refreshList() {
+		EditText txtFilter = (EditText)findViewById(R.id.contact_list_search_name);
+		String filter = txtFilter.getText().toString();
+		
+		adapter.setData(repository.getContactList(filter, true));
 	}
 	
 	public void initComponentEvents() {
@@ -94,13 +103,9 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 	   		break;
 	   		
 		case R.id.contact_list_search:
-			EditText txtFilter = (EditText)findViewById(R.id.contact_list_search_name);
-			String filter = txtFilter.getText().toString();
-			
-			adapter.setData(repository.getContactList(filter, true));
+			refreshList();
 			break;
 		}
-		
 	}
 	
 	@Override
@@ -128,6 +133,14 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 				onSelectContact(position, items, PHONE_RESULT, R.string.contact_dialog_phone);
 				break;
 		}
+	}
+	
+	public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+		
+		Contact contact = (Contact)adapter.getItem(position);
+		new EditUsernameTask().execute(contact.getId());
+		
+		return false;
 	}
 	
 	private void openContactDetails(long id) {
@@ -240,11 +253,49 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 			else
 				holder.imageAvatar.setImageResource(R.drawable.android_avatar);
 				
+			String username = repository.getContactUsername(item.getId());
+			
 			holder.textName.setText(item.getName());
-			holder.textPhone.setText("");
+			holder.textPhone.setText(username);
 
 			return convertView;
-		}
-		
+		}	
     }
+
+	class EditUsernameTask extends AsyncTask<Long, Void, String> {
+
+		private String value;
+		private long id;
+		
+		@Override
+		protected String doInBackground(Long... params) {
+					
+			final EditText input = new EditText(ListActivity.this);
+			
+			id = params[0];
+			value = "";
+			
+			Looper.prepare();
+			
+			AlertDialog dialog = new AlertDialog.Builder(ListActivity.this)
+			    .setTitle(R.string.title_username)
+			    .setMessage(R.string.contact_edit_username)
+			    .setView(input)
+			    
+			    .setPositiveButton(R.string.button_done, new DialogInterface.OnClickListener() {
+			        public void onClick(DialogInterface dialog, int whichButton) {
+			        	
+			            value = input.getText().toString();
+			            repository.saveContactUsername(id, value);
+			            			            
+			            dialog.dismiss();
+			        }
+			    }).show();
+
+			Looper.myLooper();
+			Looper.loop();
+			
+			return value;
+		}
+	}
 }

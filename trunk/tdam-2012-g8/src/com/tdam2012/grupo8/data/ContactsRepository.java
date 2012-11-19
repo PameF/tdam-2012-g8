@@ -19,7 +19,7 @@ import android.provider.ContactsContract.Contacts;
 
 public class ContactsRepository {
 	
-	public static final String DATABASE = "contacts-username";
+	public static final String DATABASE = "contacts_username";
 	public static final String COLUMN_ID = "_id";
 	public static final String COLUMN_CONTACT_ID = "contact_id";
 	public static final String COLUMN_USERNAME = "username";
