@@ -14,7 +14,7 @@
         android:textColor="@color/blanco"
         android:textSize="@dimen/padding_large"
         android:textStyle="bold" />
-
+
     <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"

@@ -75,6 +75,22 @@ public class ActionsRegistryRepository {
 		return conversations;	
 	}
 	
+	public ArrayList<ActionRegistry> getSmsWebContactConversations() {
+		
+		String sql = "SELECT * FROM " + DATABASE + " WHERE " + COLUMN_ACTION + " IN (?, ?) GROUP BY " + COLUMN_CONTACT_ID;
+		String[] params = new String [] { ActionEnum.SENT_MESSAGE_WEB.toString(), ActionEnum.RECEIVED_MESSAGE_WEB.toString() };
+	
+		SQLiteDatabase db = helper.getReadableDatabase();
+		Cursor cursor = db.rawQuery(sql, params);
+		
+		ArrayList<ActionRegistry> conversations = createActionRegistry(cursor);
+		
+		cursor.close();
+		db.close();
+		
+		return conversations;	
+	}
+	
 	public ArrayList<ActionRegistry> getEmailsContact() {
 		
 		String sql = "SELECT * FROM " + DATABASE + " WHERE " + COLUMN_ACTION + " IN (?, ?) GROUP BY " + COLUMN_CONTACT_ID;

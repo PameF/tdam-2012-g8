@@ -17,8 +17,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_launcher" />
-			
-
+			
         <TextView
             android:id="@+id/email_list_contact_name"
             android:layout_width="fill_parent"
@@ -27,7 +26,7 @@
             android:paddingLeft="5dp"
             android:text="Large Text"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/naranja_claro" />
+            android:textColor="@color/rosa_claro" />
 
     </LinearLayout>
 
@@ -52,14 +51,14 @@
         android:background="@drawable/shape_gradient_gris_oscuro"
         android:orientation="horizontal"
         android:padding="5dp" >
-
+
         <EditText
             android:id="@+id/email_list_contact_message"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="@string/email_list_contact_message"
+            android:hint="@string/sms_list_contact_message"
             android:inputType="text" />
 
         <Button

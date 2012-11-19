@@ -36,12 +36,12 @@
         <activity android:name=".ui.CallActivity" ></activity>
         
         <activity android:name=".ui.SmsListActivity" ></activity>
-		<activity android:name=".ui.SmsListContactActivity" ></activity>
+		<activity android:name=".ui.SmsConversationActivity" ></activity>
         <activity android:name=".ui.SmsNewActivity" ></activity>
         
        	<activity android:name=".ui.SmsWebListActivity" ></activity>
        	<activity android:name=".ui.SmsWebNewActivity" ></activity> 
-       	<activity android:name=".ui.SmsWebListContactActivity" ></activity> 
+       	<activity android:name=".ui.SmsWebConversationActivity" ></activity> 
 
         <activity android:name=".ui.EmailListActivity" ></activity>
         <activity android:name=".ui.EmailNewActivity" ></activity>

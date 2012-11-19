@@ -130,7 +130,7 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 				
 			case USER_SELECT:
 				items = repository.getContactPhoneNumbers(id);
-				onSelectContact(position, items, PHONE_RESULT, R.string.contact_dialog_phone);
+				onSelectContact(position, items, USER_RESULT, R.string.contact_dialog_phone);
 				break;
 		}
 	}
