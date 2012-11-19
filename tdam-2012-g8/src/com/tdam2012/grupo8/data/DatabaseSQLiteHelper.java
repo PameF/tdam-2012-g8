@@ -26,10 +26,20 @@ public class DatabaseSQLiteHelper extends SQLiteOpenHelper
 		
 		database.execSQL(sql);
 		
+		
 		sql = 	"CREATE TABLE " + ContactsRepository.DATABASE +
 				"(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 					ContactsRepository.COLUMN_CONTACT_ID + " TEXT, " +
 					ContactsRepository.COLUMN_USERNAME + " TEXT)";
+	
+		database.execSQL(sql);
+		
+		
+		sql = 	"CREATE TABLE " + ConnectivityStatusRepository.DATABASE +
+				"(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+					ConnectivityStatusRepository.COLUMN_DATE + " DATETIME, " +
+					ConnectivityStatusRepository.COLUMN_STATUS + " TEXT, " +
+					ConnectivityStatusRepository.COLUMN_TYPE + " TEXT)";
 	
 		database.execSQL(sql);
 	}
