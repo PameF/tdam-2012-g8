@@ -107,10 +107,21 @@ public class ActionsRegistryRepository {
 		return emails;	
 	}
 	
-	public ArrayList<SmsMessage> getSmsContactConversation(long contact_id) {
+	public ArrayList<SmsMessage> getSmsContactConversation(long contact_id, boolean smsWeb) {
 				
 		String sql = "SELECT * FROM " + DATABASE + " WHERE " + COLUMN_ACTION + " IN (?, ?) AND " + COLUMN_CONTACT_ID + "=?";
-		String[] params = new String [] { ActionEnum.SENT_MESSAGE.toString(), ActionEnum.RECEIVED_MESSAGE.toString(), String.valueOf(contact_id) };
+		String[] params = new String[3]; 
+		
+		if(smsWeb) {
+			params[0] = ActionEnum.SENT_MESSAGE_WEB.toString();
+			params[1] = ActionEnum.RECEIVED_MESSAGE_WEB.toString();			
+		}
+		else { 
+			params[0] = ActionEnum.SENT_MESSAGE.toString();
+			params[1] = ActionEnum.RECEIVED_MESSAGE.toString();
+		}
+
+		params[2] = String.valueOf(contact_id);
 		
 		SQLiteDatabase db = helper.getReadableDatabase();
 		Cursor cursor = db.rawQuery(sql, params);
@@ -136,10 +147,14 @@ public class ActionsRegistryRepository {
 					sms.setMessage(cursor.getString(cursor.getColumnIndex(COLUMN_MESSAGE)));
 					
 					switch(action) {
+					
 						case RECEIVED_MESSAGE:
+						case RECEIVED_MESSAGE_WEB:
 							sms.setReceivedDate(date);
 							break;
+							
 						case SENT_MESSAGE:
+						case SENT_MESSAGE_WEB:
 							sms.setSentDate(date);
 							break;
 					}
