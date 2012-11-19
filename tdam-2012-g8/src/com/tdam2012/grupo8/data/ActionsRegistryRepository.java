@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.tdam2012.grupo8.entities.ActionRegistry;
+import com.tdam2012.grupo8.entities.Email;
 import com.tdam2012.grupo8.entities.SmsMessage;
 
 import android.content.ContentValues;
@@ -74,6 +75,22 @@ public class ActionsRegistryRepository {
 		return conversations;	
 	}
 	
+	public ArrayList<ActionRegistry> getEmailsContact() {
+		
+		String sql = "SELECT * FROM " + DATABASE + " WHERE " + COLUMN_ACTION + " IN (?, ?) GROUP BY " + COLUMN_CONTACT_ID;
+		String[] params = new String [] { ActionEnum.SENT_EMAIL.toString(), ActionEnum.RECEIVED_EMAIL.toString() };
+	
+		SQLiteDatabase db = helper.getReadableDatabase();
+		Cursor cursor = db.rawQuery(sql, params);
+		
+		ArrayList<ActionRegistry> emails = createActionRegistry(cursor);
+		
+		cursor.close();
+		db.close();
+		
+		return emails;	
+	}
+	
 	public ArrayList<SmsMessage> getSmsContactConversation(long contact_id) {
 				
 		String sql = "SELECT * FROM " + DATABASE + " WHERE " + COLUMN_ACTION + " IN (?, ?) AND " + COLUMN_CONTACT_ID + "=?";
@@ -123,6 +140,57 @@ public class ActionsRegistryRepository {
 		db.close();
 		
 		return messages;		
+	}
+	
+	public ArrayList<Email> getEmailsContact(long contact_id) {
+		
+		String sql = "SELECT * FROM " + DATABASE + " WHERE " + COLUMN_ACTION + " IN (?, ?) AND " + COLUMN_CONTACT_ID + "=?";
+		String[] params = new String [] { ActionEnum.SENT_EMAIL.toString(), ActionEnum.RECEIVED_EMAIL.toString(), String.valueOf(contact_id) };
+		
+		SQLiteDatabase db = helper.getReadableDatabase();
+		Cursor cursor = db.rawQuery(sql, params);
+		
+		ArrayList<Email> emails = new ArrayList<Email>();		
+		SimpleDateFormat dateFormatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzzzzzzz yyyy");
+		
+		Email mail;
+		Date date;
+		ActionEnum action;
+		
+		if (cursor.getCount() > 0) {			
+			while (cursor.moveToNext()) {
+
+				try {
+					date = dateFormatter.parse(cursor.getString(cursor.getColumnIndex(COLUMN_DATE)));
+					action = ActionEnum.valueOf(cursor.getString(cursor.getColumnIndex(COLUMN_ACTION)));
+					
+					mail = new Email();
+					
+					mail.setContact(cursor.getLong(cursor.getColumnIndex(COLUMN_CONTACT_ID)));
+					mail.setEmailAddress(cursor.getString(cursor.getColumnIndex(COLUMN_CONTACT_PHONE_NUMBER)));
+					mail.setSubject(cursor.getString(cursor.getColumnIndex(COLUMN_MESSAGE)));
+					
+					switch(action) {
+						case RECEIVED_EMAIL:
+							mail.setReceivedDate(date);
+							break;
+						case SENT_EMAIL:
+							mail.setSentDate(date);
+							break;
+					}
+					
+					emails.add(mail);
+					
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}			
+			}
+		}
+		
+		cursor.close();
+		db.close();
+		
+		return emails;		
 	}
 	
 	private ArrayList<ActionRegistry> createActionRegistry(Cursor cursor) {

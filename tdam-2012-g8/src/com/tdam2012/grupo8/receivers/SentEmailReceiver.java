@@ -7,6 +7,8 @@ import com.tdam2012.grupo8.data.ContactsRepository;
 import com.tdam2012.grupo8.data.ActionsRegistryRepository.ActionEnum;
 import com.tdam2012.grupo8.entities.ActionRegistry;
 import com.tdam2012.grupo8.entities.Contact;
+import com.tdam2012.grupo8.ui.EmailListContactActivity;
+import com.tdam2012.grupo8.ui.EmailNewActivity;
 import com.tdam2012.grupo8.ui.SmsListContactActivity;
 
 import android.app.Activity;
@@ -25,8 +27,8 @@ public class SentEmailReceiver extends BroadcastReceiver{
 		{
 			case Activity.RESULT_OK:
 				
-				String phoneNumber = intent.getExtras().getString(SmsListContactActivity.PHONE_NUMBER_KEY);
-		        long contactId = intent.getExtras().getLong(SmsListContactActivity.CONTACT_ID_KEY);
+				String email_address = intent.getExtras().getString(EmailListContactActivity.EMAIL_ADDRESS_KEY);
+		        long contactId = intent.getExtras().getLong(EmailListContactActivity.CONTACT_ID_KEY);
 				
 		        ContactsRepository contactRep = new ContactsRepository(context);
 		        Contact contact = contactRep.getContactById(contactId);
@@ -35,7 +37,7 @@ public class SentEmailReceiver extends BroadcastReceiver{
 	 	       	reg.setAction(ActionEnum.SENT_EMAIL);
 	 	       	reg.setContactId(contactId);
 	 	       	reg.setContactName(contact.getName());
-	 	       	reg.setContactPhoneNumber(phoneNumber);
+	 	       	reg.setContactPhoneNumber(email_address);
 	 	       	reg.setDate(new Date());
 	 	       
 	 	       	ActionsRegistryRepository repository = new ActionsRegistryRepository(context);
