@@ -24,6 +24,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ListActivity extends android.app.ListActivity implements OnClickListener
 {
@@ -33,12 +34,15 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 	// Identificadores de los posibles resultados que devuelve esta activity
 	public static final String EMAIL_RESULT = "EMAIL_RESULT";
 	public static final String PHONE_RESULT = "PHONE_RESULT";
+	public static final String USER_RESULT = "USER_RESULT";
+	
 	public static final String CONTACT_ID = "CONTACT_ID";
 	public static final String CONTACT_NAME = "CONTACT_NAME";
 	
 	public enum OnSelectActionEnum {
 		PHONE_SELECT,
 		EMAIL_SELECT,
+		USER_SELECT,
 		SHOW_DETAILS
 	}
 	
@@ -118,6 +122,11 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 				items = repository.getContactPhoneNumbers(id);
 				onSelectContact(position, items, PHONE_RESULT, R.string.contact_dialog_phone);
 				break;
+				
+			case USER_SELECT:
+				items = repository.getContactPhoneNumbers(id);
+				onSelectContact(position, items, PHONE_RESULT, R.string.contact_dialog_phone);
+				break;
 		}
 	}
 	
@@ -131,6 +140,11 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 	}
 	
 	private void onSelectContact(final int position, final String[] items, final String key, int title) {		
+		
+		if(items.length == 0) {
+			Toast.makeText(this, "El contacto no tiene los datos necesarios", Toast.LENGTH_LONG).show();
+			return;
+		}
 		
 		if(items.length == 1) {
 			setSelectResult(position, key, items[0]);
