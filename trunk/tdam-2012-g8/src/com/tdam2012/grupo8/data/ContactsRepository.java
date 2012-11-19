@@ -169,8 +169,8 @@ public class ContactsRepository {
 	    	if(number.contains(phoneNumber) || phoneNumber.contains(number)) {
 	    		contact = getContactById(contactId);
 	    		break;
-	    	}			
-	    } 
+	    	}
+	    }
 
 	    cursor.close();
 
