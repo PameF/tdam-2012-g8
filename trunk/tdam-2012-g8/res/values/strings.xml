@@ -1,25 +1,12 @@
 <resources>
     <string name="title_app_name">TDAM APP</string>
     <string name="menu_settings">Configuración</string>
-    <string name="title_calling">Llamando...</string>
-    <string name="contact_name">Pamela Ferreyra</string>
-    <string name="contact_number">(0351) 152-345678</string>
-    <string name="phone_type1">(Móvil)</string>
-    <string name="phone_type2">(Casa)</string>
-    <string name="user_name">Victoria</string>
-    <string name="user_surname">Ahumada</string>
 	<string name="title_user">Usuario TDAM</string>
-	<string name="user_username">vicky_rhrj</string>
 	<string name="title_phone">Teléfonos</string>
-	<string name="user_home_phone">(0351) 451-8772</string>
-	<string name="user_cell_phone">(0351) 156-963075</string>
 	<string name="title_email">E-mails</string>
-	<string name="user_email1">vyahumada@gmail.com</string>
-	<string name="user_email2">vicky_rhrj@hotmail.com</string>
 	<string name="title_new_contact">Nuevo Contacto</string>
 	<string name="title_new_email">Nuevo Correo Electrónico</string>
 	<string name="title_receiver">Destinatarios:</string>
-	<string name="contact_email">pamef.2707@gmail.com</string>
 	<string name="title_subject">Asunto:</string>
 	<string name="title_message">Mensaje:</string>
 	<string name="title_send">Enviar</string>
@@ -29,13 +16,6 @@
 	<string name="title_sms_web">SMS Web</string>
 	<string name="title_new_sms">Nuevo Mensaje de Texto</string>
 	<string name="title_new_sms_web">Nuevo Mensaje de Texto Web</string>
-	<string name="date">20:48, 30 sep</string>
-	<string name="dialog1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
-	<string name="dialog2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt tincidunt neque, eu tempor odio tristique vitae.</string>
-	<string name="dialog3">Etiam vulputate fermentum ante, eget aliquam mi bibendum eu.</string>
-	<string name="dialog4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt tincidunt neque, eu tempor odio tristique vitae. Etiam vulputate fermentum ante, eget aliquam mi bibendum eu. </string>
-	<string name="title_sender">Remitente</string>
-	<string name="last_message">Último mensaje...</string>
 	<string name="contact_dialog_email">Seleccione un e-mail</string>
 	<string name="contact_dialog_phone">Seleccione un teléfono</string>
 	<string name="user_login_nickname">Usuario</string>
@@ -44,10 +24,4 @@
 	<string name="user_login_register">Registrarme</string>
 	<string name="sms_list_contact_message">Mensaje</string>
 	<string name="user_new_password_confirm">Confirmar clave</string>
-
-
-	
-	
-	
-
 </resources>

@@ -105,8 +105,10 @@ public class ActionsRegistryRepository {
 					switch(action) {
 						case RECEIVED_MESSAGE:
 							sms.setReceivedDate(date);
+							break;
 						case SENT_MESSAGE:
 							sms.setSentDate(date);
+							break;
 					}
 					
 					messages.add(sms);

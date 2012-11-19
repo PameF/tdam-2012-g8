@@ -49,22 +49,20 @@
                 android:layout_weight="100"
                 android:background="@color/verde_claro"
                 android:orientation="vertical" >
-
+
                 <TextView
                     android:id="@+id/sms_dialog_message"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="@string/dialog2"
                     android:textColor="@color/blanco" />
-
+
                 <TextView
                     android:id="@+id/sms_dialog_date"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:paddingLeft="10dp"
-                    android:text="@string/date"
                     android:textColor="@color/gris2_oscuro" />
 
             </LinearLayout>
