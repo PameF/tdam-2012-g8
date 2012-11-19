@@ -2,15 +2,16 @@ package com.tdam2012.grupo8.entities;
 
 import java.util.Date;
 
-public class SmsMessage {
+public class WebMessage {
 	
 	private long id;
 	private long contact;
-	private String phoneNumber;
+	private String usernameFrom;
+	private String usernameTo;
 	private String message;
 	private Date sentDate;
-	private Date deliveredDate;
 	private Date receivedDate;
+	
 	
 	public long getId() {
 		return id;
@@ -28,12 +29,20 @@ public class SmsMessage {
 		this.contact = contact;
 	}
 	
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getUsernameFrom() {
+		return usernameFrom;
 	}
 	
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setUsernameFrom(String usernameFrom) {
+		this.usernameFrom = usernameFrom;
+	}
+	
+	public String getUsernameTo() {
+		return usernameTo;
+	}
+	
+	public void setUsernameTo(String usernameTo) {
+		this.usernameTo = usernameTo;
 	}
 	
 	public String getMessage() {
@@ -48,23 +57,15 @@ public class SmsMessage {
 		return sentDate;
 	}
 	
-	public void setSentDate(Date date) {
-		this.sentDate = date;
-	}
-	
-	public Date getDeliveredDate() {
-		return deliveredDate;
-	}
-	
-	public void setDeliveredDate(Date date) {
-		this.deliveredDate = date;
+	public void setSentDate(Date sentDate) {
+		this.sentDate = sentDate;
 	}
 	
 	public Date getReceivedDate() {
 		return receivedDate;
 	}
 	
-	public void setReceivedDate(Date date) {
-		this.receivedDate = date;
+	public void setReceivedDate(Date receivedDate) {
+		this.receivedDate = receivedDate;
 	}
 }
