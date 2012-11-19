@@ -2,7 +2,6 @@ package com.tdam2012.grupo8.networking;
 
 import java.io.StringReader;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -17,8 +16,9 @@ import org.xml.sax.InputSource;
 import com.tdam2012.grupo8.base.Preferences;
 import com.tdam2012.grupo8.data.ActionsRegistryRepository;
 import com.tdam2012.grupo8.data.ActionsRegistryRepository.ActionEnum;
+import com.tdam2012.grupo8.data.ContactsRepository;
 import com.tdam2012.grupo8.entities.ActionRegistry;
-import com.tdam2012.grupo8.entities.WebMessage;
+import com.tdam2012.grupo8.entities.Contact;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -59,7 +59,9 @@ public class ReceiveMessageService  extends AsyncTask<Object, Void, String> {
 		String message = MessageSenderService.processRequest(result);		
 		if(message == null) {
 			
-			ActionsRegistryRepository repository = new ActionsRegistryRepository(context);		        
+			ActionsRegistryRepository registryRep = new ActionsRegistryRepository(context);	
+			ContactsRepository contactRep = new ContactsRepository(context);
+			
 			SimpleDateFormat format = new SimpleDateFormat(TIMESTAMP_FORMAT);
 			
 			try {
@@ -82,6 +84,7 @@ public class ReceiveMessageService  extends AsyncTask<Object, Void, String> {
 				
 				Node current;
 				ActionRegistry reg;
+				Contact contact;
 				
 				for(int i = 0; i < messagesList.getLength(); i++) {
 					
@@ -91,13 +94,17 @@ public class ReceiveMessageService  extends AsyncTask<Object, Void, String> {
 					String timestamp = current.getAttributes().getNamedItem("timestamp").getTextContent();
 					String content = current.getTextContent();
 					
+					contact = contactRep.getContactByUsername(from);
+					
 					reg = new ActionRegistry();
 			       	reg.setAction(ActionEnum.RECEIVED_MESSAGE_WEB);
+			       	reg.setContactId(contact.getId());
+			       	reg.setContactName(contact.getName());
 			       	reg.setContactPhoneNumber(from);
 			       	reg.setMessage(content);
 			       	reg.setDate(format.parse(timestamp));
 			       
-			        repository.insertRegistration(reg);
+			        registryRep.insertRegistration(reg);
 				}
 				
 			} catch (Exception e) {

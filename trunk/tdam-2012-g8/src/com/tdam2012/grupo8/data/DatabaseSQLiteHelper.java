@@ -25,6 +25,13 @@ public class DatabaseSQLiteHelper extends SQLiteOpenHelper
 						ActionsRegistryRepository.COLUMN_DATE + " DATETIME)";
 		
 		database.execSQL(sql);
+		
+		sql = 	"CREATE TABLE " + ContactsRepository.DATABASE +
+				"(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+					ContactsRepository.COLUMN_CONTACT_ID + " TEXT, " +
+					ContactsRepository.COLUMN_USERNAME + " TEXT)";
+	
+		database.execSQL(sql);
 	}
 
 	@Override
