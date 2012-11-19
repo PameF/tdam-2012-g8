@@ -31,7 +31,7 @@ public class MessageSenderService {
 		try {
 			
 			HttpClient client = new DefaultHttpClient();
-			String serverUrl = "http://192.168.1.5:8080/MessageSender/";
+			String serverUrl = "http://172.16.18.115:8080/MessageSender/";
 		
 			StringEntity se = new StringEntity(xml, HTTP.UTF_8);
 		    se.setContentType("text/xml");
@@ -43,8 +43,7 @@ public class MessageSenderService {
 		    HttpResponse response = client.execute(post);
 	        HttpEntity re = response.getEntity();
 
-	        result = EntityUtils.toString(re);
-	        
+	        result = EntityUtils.toString(re);	        
 		}
 		catch(Exception e) {
 			e.printStackTrace();

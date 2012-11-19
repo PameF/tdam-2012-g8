@@ -1,7 +1,11 @@
 package com.tdam2012.grupo8.ui;
 
+import java.util.ArrayList;
+
 import com.tdam2012.grupo8.R;
+import com.tdam2012.grupo8.data.ActionsRegistryRepository;
 import com.tdam2012.grupo8.data.ContactsRepository;
+import com.tdam2012.grupo8.entities.SmsMessage;
 import com.tdam2012.grupo8.networking.SendMessageService;
 import com.tdam2012.grupo8.ui.adapters.ContactSmsListAdapter;
 
@@ -40,6 +44,20 @@ public class SmsWebConversationActivity extends ListActivity implements OnClickL
         adapter = new ContactSmsListAdapter(this, R.layout.listitem_dialog_pink, R.layout.listitem_dialog_green);
 		getListView().setAdapter(adapter);
     }
+	
+	public void onResume() {
+		super.onResume();
+		inicializeListView();
+	}
+	
+	private void inicializeListView() {
+		
+		ActionsRegistryRepository repository = new ActionsRegistryRepository(this);
+		ArrayList<SmsMessage> messages = repository.getSmsContactConversation(contact, true);
+		
+		adapter.setData(messages);
+	}
+
 	
 	private void inicializeContactInfo() {
 		

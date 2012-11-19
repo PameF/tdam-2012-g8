@@ -45,8 +45,9 @@ public class SendMessageService  extends AsyncTask<Object, Void, String> {
 	@Override
 	protected void onPostExecute(String result) {
 		
-		String message = MessageSenderService.processRequest(result);		
-		if(message == null) {
+		String error = MessageSenderService.processRequest(result);	
+		
+		if(error == null) {
 			
 			ActionRegistry reg = new ActionRegistry();
  	       	reg.setAction(ActionEnum.SENT_MESSAGE_WEB);
@@ -60,7 +61,7 @@ public class SendMessageService  extends AsyncTask<Object, Void, String> {
  	       repository.insertRegistration(reg);   
 		}
 		else {
-			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+			Toast.makeText(context, error, Toast.LENGTH_LONG).show();
 		}
 	}
 	

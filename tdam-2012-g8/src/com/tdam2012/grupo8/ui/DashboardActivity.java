@@ -8,6 +8,7 @@ import com.tdam2012.grupo8.data.ActionsRegistryRepository.ActionEnum;
 import com.tdam2012.grupo8.data.ContactsRepository;
 import com.tdam2012.grupo8.entities.ActionRegistry;
 import com.tdam2012.grupo8.entities.Contact;
+import com.tdam2012.grupo8.networking.SynchronizationService;
 import com.tdam2012.grupo8.ui.contacts.ListActivity;
 
 import android.net.Uri;
@@ -31,6 +32,8 @@ public class DashboardActivity extends Activity implements OnClickListener, OnMe
         setContentView(R.layout.activity_dashboard);
         
         inicializarEventos();
+        
+        new SynchronizationService().execute(this);
     }
 
     @Override

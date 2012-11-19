@@ -101,7 +101,7 @@ public class SmsConversationActivity extends ListActivity implements OnClickList
 	private void inicializeListView() {
 				
 		ActionsRegistryRepository repository = new ActionsRegistryRepository(this);
-		ArrayList<SmsMessage> messages = repository.getSmsContactConversation(contact);
+		ArrayList<SmsMessage> messages = repository.getSmsContactConversation(contact, false);
 		
 		adapter.setData(messages);
 	}

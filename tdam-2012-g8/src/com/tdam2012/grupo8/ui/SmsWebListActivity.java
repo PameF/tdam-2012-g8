@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class SmsWebListActivity extends android.app.ListActivity implements OnClickListener
@@ -74,6 +75,13 @@ public class SmsWebListActivity extends android.app.ListActivity implements OnCl
 		}
 	}
 	
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		
+		ActionRegistry registry = (ActionRegistry)adapter.getItem(position);		
+		openContactConversation(registry.getContactName(), registry.getContactPhoneNumber(), registry.getContactId());
+	}
+	
 	private void openContactConversation (String name, String username, long id) {
 		Intent intent = new Intent(SmsWebListActivity.this, SmsWebConversationActivity.class);
 		
@@ -121,7 +129,7 @@ public class SmsWebListActivity extends android.app.ListActivity implements OnCl
 			
 			if (convertView == null) {
 				
-				convertView = inflater.inflate(R.layout.listitem_sms, null);
+				convertView = inflater.inflate(R.layout.listitem_sms_web, null);
 				
 				holder = new Holder();
 				holder.textContactName = (TextView) convertView.findViewById(R.id.sms_conversation_contact_name);
