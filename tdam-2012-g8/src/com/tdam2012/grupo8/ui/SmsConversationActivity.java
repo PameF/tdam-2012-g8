@@ -45,7 +45,7 @@ public class SmsConversationActivity extends ListActivity implements OnClickList
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sms_list_conversation);
+        setContentView(R.layout.activity_sms_conversation);
         
         inicializeContactInfo();
                 
