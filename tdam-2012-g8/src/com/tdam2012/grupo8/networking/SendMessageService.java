@@ -29,8 +29,9 @@ public class SendMessageService  extends AsyncTask<Object, Void, String> {
 		
 		String response = null;
 		
+		context = (Context)params[0]; 
+		
 		if(isOnline()) {		
-			context = (Context)params[0]; 
 			contactUsername = (String)params[1];
 			contactName = (String)params[2];
 			contactId = String.valueOf(params[3]);

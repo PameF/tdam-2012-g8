@@ -27,6 +27,7 @@ public class TabHostActivity extends TabActivity implements TabHost.OnTabChangeL
         Resources res = getResources();
         
         Intent intent = new Intent().setClass(this, HistoryActionActivity.class);
+        intent.putExtra(HistoryActionActivity.TAB, HistoryActionActivity.TAB_CALL);
         
         //se configura la pestaña con sus propiedades
         spec = tabHost.newTabSpec("HistoryCallActivity")
@@ -37,15 +38,21 @@ public class TabHostActivity extends TabActivity implements TabHost.OnTabChangeL
         tabHost.addTab(spec);
         
         intent = new Intent().setClass(this, HistoryActionActivity.class);
+        intent.putExtra(HistoryActionActivity.TAB, HistoryActionActivity.TAB_SMS);
+        
         spec = tabHost.newTabSpec("HistorySmsActivity").setIndicator("SMS", res.getDrawable(R.drawable.icon_sms_white)).setContent(intent);
         tabHost.addTab(spec);
         
         
-        intent = new Intent().setClass(this, HistoryActionActivity.class);  
+        intent = new Intent().setClass(this, HistoryActionActivity.class); 
+        intent.putExtra(HistoryActionActivity.TAB, HistoryActionActivity.TAB_EMAIL);
+         
         spec = tabHost.newTabSpec("HistoryEmailActivity").setIndicator("Correo", res.getDrawable(R.drawable.icon_email_white)).setContent(intent);
         tabHost.addTab(spec);
         
         intent = new Intent().setClass(this, HistoryActionActivity.class);
+        intent.putExtra(HistoryActionActivity.TAB, HistoryActionActivity.TAB_SMS_WEB);
+        
         spec = tabHost.newTabSpec("HistorySmsWebActivity").setIndicator("SMS Web", res.getDrawable(R.drawable.icon_sms_web_white)).setContent(intent);
         tabHost.addTab(spec);
         

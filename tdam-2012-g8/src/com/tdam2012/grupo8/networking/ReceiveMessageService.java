@@ -123,7 +123,7 @@ public class ReceiveMessageService extends AsyncTask<Object, Void, String> {
 	        editor.commit();
 		}
 		else {
-			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+			//Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 		}
 	}
 	

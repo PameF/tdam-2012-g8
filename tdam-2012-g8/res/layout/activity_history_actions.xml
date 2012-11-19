@@ -2,16 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >   
+    android:orientation="vertical" >
 
-  	<include
-   		android:id="@+id/action_list_item1"
-      	layout="@layout/listitem_contact_action" />
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-	<include layout="@layout/listitem_contact_action" />
- 	<include layout="@layout/listitem_contact_action" />
-  	<include layout="@layout/listitem_contact_action" />
-  	<include layout="@layout/listitem_contact_action" />
- 	<include layout="@layout/listitem_contact_action" />
-
+    </ListView>
+    
 </LinearLayout>

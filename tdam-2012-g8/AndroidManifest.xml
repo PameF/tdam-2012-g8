@@ -53,9 +53,6 @@
         <activity android:name=".ui.contacts.DetailsActivity" ></activity>
                 
        	<activity android:name=".ui.HistoryActionActivity" ></activity>
-       	<activity android:name=".ui.HistorySmsActivity" ></activity>
-       	<activity android:name=".ui.HistoryEmailActivity" ></activity>
-       	<activity android:name=".ui.HistorySmsWebActivity" ></activity>
        	<activity android:name=".ui.TabHostActivity" ></activity>
        	
        	<receiver android:name=".receivers.ConnectivityStatusReceiver">
