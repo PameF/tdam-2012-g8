@@ -69,9 +69,8 @@ public class ContactEmailListAdapter extends BaseAdapter {
 		Email item = (Email) getItem(position);
 		
 		boolean sent = item.getSentDate() != null;
-		int layout = sent ? View: View ;
 		Date date = sent ? item.getSentDate() : item.getReceivedDate();
-		convertView = createView(layout, sent);
+		convertView = createView(R.layout.listitem_email, sent);
 		holder = (Holder) convertView.getTag();
 		holder.textSubject.setText(item.getSubject());
 		holder.textContentEmail.setText(item.getContentEmail());
