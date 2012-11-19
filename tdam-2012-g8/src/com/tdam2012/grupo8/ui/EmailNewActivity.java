@@ -12,7 +12,7 @@ public class EmailNewActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_new);
         
-        String listContact[] = {"pamef.2707@gmail.com"};
+        String listContact[] = {"vyahumada@gmail.com"};
         
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("plain/text");
@@ -21,5 +21,4 @@ public class EmailNewActivity extends Activity
         intent.putExtra(Intent.EXTRA_TEXT,"");
         startActivity(Intent.createChooser(intent, "Email"));
     }
-	
 }

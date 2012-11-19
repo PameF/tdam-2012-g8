@@ -13,18 +13,12 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.tdam2012.grupo8.R;
 import com.tdam2012.grupo8.data.ActionsRegistryRepository;
-import com.tdam2012.grupo8.data.ContactsRepository;
 import com.tdam2012.grupo8.entities.ActionRegistry;
-import com.tdam2012.grupo8.entities.Email;
-import com.tdam2012.grupo8.ui.SmsListActivity.SmsListAdapter;
-import com.tdam2012.grupo8.ui.SmsListActivity.SmsListAdapter.Holder;
-import com.tdam2012.grupo8.ui.adapters.ContactEmailListAdapter;
 import com.tdam2012.grupo8.ui.contacts.ListActivity;
 
 public class EmailListActivity extends android.app.ListActivity implements OnClickListener 
@@ -57,16 +51,13 @@ public class EmailListActivity extends android.app.ListActivity implements OnCli
 	
 	public void onClick(View v) {
 		
-		switch(v.getId()) {
-		
-		case R.id.button1:
-		{	
-		Intent i = new Intent(EmailListActivity.this, ListActivity.class);
-		i.putExtra(ListActivity.SELECT_ACTION_KEY, ListActivity.OnSelectActionEnum.EMAIL_SELECT);
-		
-		startActivityForResult(i, CONTACT_PHONE_NUMBER_REQUEST);
-		break;
-		}
+		switch(v.getId()) {		
+			case R.id.button1:
+				Intent i = new Intent(EmailListActivity.this, ListActivity.class);
+				i.putExtra(ListActivity.SELECT_ACTION_KEY, ListActivity.OnSelectActionEnum.EMAIL_SELECT);
+				
+				startActivityForResult(i, CONTACT_PHONE_NUMBER_REQUEST);
+				break;
 		}
 	}
 	
@@ -89,8 +80,17 @@ public class EmailListActivity extends android.app.ListActivity implements OnCli
 	}
 	
 	private void openContactConversation (String name, String emailAddress, long id) {
-		Intent intent = new Intent(EmailListActivity.this, EmailNewActivity.class);
-		startActivity(intent);
+		/*Intent i = new Intent(EmailListActivity.this,  EmailNewActivity.class);
+		startActivity(i);*/
+		
+		String listContact[] = { emailAddress };
+        
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("plain/text");
+        intent.putExtra(Intent.EXTRA_EMAIL, listContact);
+        intent.putExtra(Intent.EXTRA_SUBJECT,"");
+        intent.putExtra(Intent.EXTRA_TEXT,"");
+        startActivity(Intent.createChooser(intent, "Email"));
 	}
 
 	class EmailListAdapter extends BaseAdapter {
