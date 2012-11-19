@@ -20,7 +20,7 @@ public class IncomingCallReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 
-       	Bundle extras = intent.getExtras();
+       /*	Bundle extras = intent.getExtras();
        	
        	if (extras != null) {
        		
@@ -63,6 +63,7 @@ public class IncomingCallReceiver extends BroadcastReceiver {
        	reg.setDate(new Date());
        	
        	return reg;
-	}
+	}*/
+}
 }
 
