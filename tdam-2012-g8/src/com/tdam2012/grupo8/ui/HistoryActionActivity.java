@@ -1,15 +1,14 @@
 package com.tdam2012.grupo8.ui;
 
-import com.tdam2012.grupo8.R;
-
 import android.app.Activity;
 import android.os.Bundle;
+import com.tdam2012.grupo8.R;
 
-public class CallActivity extends Activity 
-{
+public class HistoryActionActivity extends Activity {
+
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_call);
+        setContentView(R.layout.activity_history_actions);
     }
-
+	
 }

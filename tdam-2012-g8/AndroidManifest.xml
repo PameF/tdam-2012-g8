@@ -49,7 +49,7 @@
         <activity android:name=".ui.contacts.NewActivity" ></activity>
         <activity android:name=".ui.contacts.DetailsActivity" ></activity>
                 
-       	<activity android:name=".ui.HistoryCallActivity" ></activity>
+       	<activity android:name=".ui.HistoryActionActivity" ></activity>
        	<activity android:name=".ui.HistorySmsActivity" ></activity>
        	<activity android:name=".ui.HistoryEmailActivity" ></activity>
        	<activity android:name=".ui.HistorySmsWebActivity" ></activity>
