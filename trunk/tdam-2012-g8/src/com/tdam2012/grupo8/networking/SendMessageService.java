@@ -28,7 +28,7 @@ public class SendMessageService  extends AsyncTask<Object, Void, String> {
 		context = (Context)params[0]; 
 		contactUsername = (String)params[1];
 		contactName = (String)params[2];
-		contactId = (String)params[3];
+		contactId = String.valueOf(params[3]);
 		message = (String)params[4];
 		
 		SharedPreferences preferences = context.getSharedPreferences(Preferences.PREFERENCE_USER, context.MODE_PRIVATE);

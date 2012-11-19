@@ -129,7 +129,9 @@ public class ListActivity extends android.app.ListActivity implements OnClickLis
 				break;
 				
 			case USER_SELECT:
-				items = repository.getContactPhoneNumbers(id);
+				String username = repository.getContactUsername(id); 
+				items = username != null ? new String[] { username } : new String[] {};
+				
 				onSelectContact(position, items, USER_RESULT, R.string.contact_dialog_phone);
 				break;
 		}
